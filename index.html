@@ -12,8 +12,24 @@
 <meta property="og:title" content="Аренда лофта в Москве для мероприятий — SOLDOUT, 175 м²">
 <meta property="og:description" content="Лофт 175 м² с гримеркой у м. Электрозаводская. Свадьбы, корпоративы, съёмки. От 4 000 ₽/час, всё оборудование включено, без ограничений по шуму.">
 <meta property="og:url" content="https://soloft.ru/">
-<meta property="og:image" content="https://soloft.ru/assets/img/hero.jpeg">
+<meta property="og:image" content="https://soldout-loft.vercel.app/assets/opt/ev-02-1024.jpg">
 <meta property="og:locale" content="ru_RU">
+<link rel="canonical" href="https://soldout-loft.vercel.app/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#3F5A73">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SOLDOUT LOFT">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://soldout-loft.vercel.app/">
+<meta property="og:image" content="https://soldout-loft.vercel.app/assets/opt/ev-02-1024.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="683">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Аренда лофта в Москве для мероприятий — SOLDOUT, 175 м²">
+<meta name="twitter:description" content="Лофт 175 м² с гримеркой у м. Электрозаводская. Свадьбы, корпоративы, съёмки. От 4 000 ₽/час, всё оборудование включено, без ограничений по шуму.">
+<meta name="twitter:image" content="https://soldout-loft.vercel.app/assets/opt/ev-02-1024.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Jost — ближайший бесплатный аналог фирменного NAMU Pro: тот же геометрический
@@ -32,7 +48,7 @@
   "alternateName":"СОЛДАУТ",
   "description":"Лофт 175 м² для мероприятий в Москве: свадьбы, корпоративы, дни рождения, съёмки и конференции. Гримерная на 6 мест, звук, проектор и администратор включены в стоимость часа.",
   "url":"https://soloft.ru/",
-  "image":"https://soloft.ru/assets/img/hero.jpeg",
+  "image":"https://soldout-loft.vercel.app/assets/opt/ev-02-1024.jpg",
   "telephone":"+7-985-362-45-58",
   "email":"soldout-loft@yandex.ru",
   "maximumAttendeeCapacity":100,
@@ -485,6 +501,18 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
   .h1 .ln>span{transform:none}
   .hero-sub,.hero-act,.hero-media{opacity:1}
 }
+
+.bank{display:grid;gap:10px}
+.bank div{display:grid;grid-template-columns:minmax(0,.44fr) minmax(0,1fr);gap:12px;
+  padding-bottom:9px;border-bottom:1px solid var(--ink-12)}
+.bank dt{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-40)}
+.bank dd{font-variant-numeric:tabular-nums;word-break:break-all}
+.req button{background:none;border:0;padding:0;font:inherit;cursor:pointer}
+
+.err{display:block;font-size:.78rem;color:#b4471f;min-height:1em;margin-top:4px}
+.form input[aria-invalid="true"]{border-color:#b4471f}
+.sent{padding:20px;border:1px solid var(--slate);color:var(--slate);font-size:.96rem}
+.btn[disabled]{opacity:.45;pointer-events:none}
 </style>
 </head>
 <body>
@@ -529,14 +557,14 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
     </div>
 
     <div class="hero-media" id="hm">
-      <img src="assets/img/hero.jpeg" alt="Зал лофта SOLDOUT: кирпич, арочные окна, гирлянды" id="hmi">
+      <picture><source type="image/webp" sizes="100vw" srcset="assets/opt/hero-640.webp 640w, assets/opt/hero-1024.webp 1024w"><img src="assets/opt/hero-1024.jpg" width="1160" height="520" fetchpriority="high" decoding="async" alt="Зал лофта SOLDOUT: кирпич, арочные окна, гирлянды"></picture>
     </div>
 
     <div class="stats">
-      <div class="stat rv"><b data-n="175">0</b><span>м², один зал без колонн</span></div>
-      <div class="stat rv"><b data-n="100" data-pre="до ">0</b><span>гостей на фуршете</span></div>
-      <div class="stat rv"><b data-n="6">0</b><span>мест в гримерной</span></div>
-      <div class="stat rv"><b data-n="5">0</b><span>минут пешком от метро</span></div>
+      <div class="stat rv"><b data-n="175">175</b><span>м², один зал без колонн</span></div>
+      <div class="stat rv"><b data-n="100" data-pre="до ">до 100</b><span>гостей на фуршете</span></div>
+      <div class="stat rv"><b data-n="6">6</b><span>мест в гримерной</span></div>
+      <div class="stat rv"><b data-n="5">5</b><span>минут пешком от метро</span></div>
     </div>
   </div>
 </section>
@@ -563,25 +591,25 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
 
     <div class="fmt">
       <article class="fmt-c rv">
-        <img src="assets/img/ev-03.jpg" alt="Театральная рассадка перед экраном">
+        <picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-03-640.webp 640w, assets/opt/ev-03-1024.webp 1024w, assets/opt/ev-03-1600.webp 1600w"><img src="assets/opt/ev-03-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Театральная рассадка перед экраном"></picture>
         <h3 class="h3">Конференции<br>и обучение</h3>
         <p>Проектор, экран 3 м, микрофоны, розетки по периметру. Кофе-брейк — в зоне бара.</p>
         <div class="fmt-cap">до 80 гостей · театр</div>
       </article>
       <article class="fmt-c rv">
-        <img src="assets/img/hall-01.jpg" alt="Вечеринка: диско-шары и конфетти">
+        <picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/hall-01-640.webp 640w, assets/opt/hall-01-1024.webp 1024w, assets/opt/hall-01-1600.webp 1600w"><img src="assets/opt/hall-01-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Вечеринка: диско-шары и конфетти"></picture>
         <h3 class="h3">Вечеринки<br>и корпоративы</h3>
         <p>Дискошары, светомузыка и барная стойка уже на месте. Соседей за стеной нет.</p>
         <div class="fmt-cap">до 100 гостей · фуршет</div>
       </article>
       <article class="fmt-c rv">
-        <img src="assets/img/ev-02.jpg" alt="Пустой зал при дневном свете">
+        <picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-02-640.webp 640w, assets/opt/ev-02-1024.webp 1024w, assets/opt/ev-02-1600.webp 1600w"><img src="assets/opt/ev-02-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Пустой зал при дневном свете"></picture>
         <h3 class="h3">Съёмки<br>и контент</h3>
         <p>Готовая фотозона, дневной свет с двух сторон, подъезд к дверям для разгрузки.</p>
         <div class="fmt-cap">почасово · от 2 часов</div>
       </article>
       <article class="fmt-c rv">
-        <img src="assets/img/banquet.jpg" alt="Банкетная рассадка: круглые столы под белым текстилем в зале лофта">
+        <picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/banquet-640.webp 640w, assets/opt/banquet-1024.webp 1024w"><img src="assets/opt/banquet-1024.jpg" width="1024" height="683" loading="lazy" decoding="async" alt="Банкетная рассадка: круглые столы под белым текстилем в зале лофта"></picture>
         <h3 class="h3">Свадьбы<br>и банкеты</h3>
         <p>Круглые столы, гримерная для сборов, отдельный вход — гости не мешают подготовке.</p>
         <div class="fmt-cap">до 50 гостей · банкет</div>
@@ -717,18 +745,18 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
     </div>
 
     <div class="gal rv">
-      <figure class="wide tall"><img src="assets/img/ev-02.jpg" alt="Зал лофта днём: дневной свет из арочных окон, кирпич и гирлянды"><figcaption>Зал днём · 175 м²</figcaption></figure>
-      <figure><img src="assets/img/loft-02.jpg" alt="Зона отдыха у окон: кожаные диваны и белая циклорамная стена"><figcaption>Зона отдыха</figcaption></figure>
-      <figure><img src="assets/img/ev-01.jpg" alt="Гримерная лофта: шесть мест с зеркалами и подсветкой"><figcaption>Гримерная · 6 мест</figcaption></figure>
-      <figure><img src="assets/img/loft-01.jpg" alt="Арочный проход между зонами лофта"><figcaption>Арочный проход</figcaption></figure>
-      <figure><img src="assets/img/banquet.jpg" alt="Банкетная рассадка: круглые столы под белым текстилем"><figcaption>Банкет · до 50</figcaption></figure>
-      <figure><img src="assets/img/loft-04.jpg" alt="Кирпичная стена с высоким окном и люстрой"><figcaption>Кирпич и свет</figcaption></figure>
-      <figure><img src="assets/img/ev-03.jpg" alt="Театральная рассадка: ряды стульев перед экраном"><figcaption>Театр · до 80</figcaption></figure>
-      <figure><img src="assets/img/loft-05.jpg" alt="Экран и звуковое оборудование для конференции"><figcaption>Экран 3 м и звук</figcaption></figure>
-      <figure><img src="assets/img/hall-01.jpg" alt="Вечеринка в лофте: диско-шары и конфетти"><figcaption>Вечеринка</figcaption></figure>
-      <figure><img src="assets/img/loft-03.jpg" alt="Коктейльные столы у панельной стены"><figcaption>Фуршетная зона</figcaption></figure>
-      <figure><img src="assets/img/ev-04.jpg" alt="Входная зона лофта с гардеробом"><figcaption>Вход · гардероб</figcaption></figure>
-      <figure><img src="assets/img/ev-05.jpg" alt="Санузлы лофта"><figcaption>Два санузла</figcaption></figure>
+      <figure class="wide tall"><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-02-640.webp 640w, assets/opt/ev-02-1024.webp 1024w, assets/opt/ev-02-1600.webp 1600w"><img src="assets/opt/ev-02-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Зал лофта днём: дневной свет из арочных окон, кирпич и гирлянды"></picture><figcaption>Зал днём · 175 м²</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/loft-02-640.webp 640w, assets/opt/loft-02-1024.webp 1024w"><img src="assets/opt/loft-02-1024.jpg" width="1500" height="1000" loading="lazy" decoding="async" alt="Зона отдыха у окон: кожаные диваны и белая циклорамная стена"></picture><figcaption>Зона отдыха</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-01-640.webp 640w, assets/opt/ev-01-1024.webp 1024w, assets/opt/ev-01-1600.webp 1600w"><img src="assets/opt/ev-01-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Гримерная лофта: шесть мест с зеркалами и подсветкой"></picture><figcaption>Гримерная · 6 мест</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/loft-01-640.webp 640w, assets/opt/loft-01-1024.webp 1024w"><img src="assets/opt/loft-01-1024.jpg" width="1500" height="1000" loading="lazy" decoding="async" alt="Арочный проход между зонами лофта"></picture><figcaption>Арочный проход</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/banquet-640.webp 640w, assets/opt/banquet-1024.webp 1024w"><img src="assets/opt/banquet-1024.jpg" width="1024" height="683" loading="lazy" decoding="async" alt="Банкетная рассадка: круглые столы под белым текстилем"></picture><figcaption>Банкет · до 50</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/loft-04-640.webp 640w, assets/opt/loft-04-1024.webp 1024w"><img src="assets/opt/loft-04-1024.jpg" width="1500" height="1000" loading="lazy" decoding="async" alt="Кирпичная стена с высоким окном и люстрой"></picture><figcaption>Кирпич и свет</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-03-640.webp 640w, assets/opt/ev-03-1024.webp 1024w, assets/opt/ev-03-1600.webp 1600w"><img src="assets/opt/ev-03-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Театральная рассадка: ряды стульев перед экраном"></picture><figcaption>Театр · до 80</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/loft-05-640.webp 640w, assets/opt/loft-05-1024.webp 1024w"><img src="assets/opt/loft-05-1024.jpg" width="1500" height="1000" loading="lazy" decoding="async" alt="Экран и звуковое оборудование для конференции"></picture><figcaption>Экран 3 м и звук</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/hall-01-640.webp 640w, assets/opt/hall-01-1024.webp 1024w, assets/opt/hall-01-1600.webp 1600w"><img src="assets/opt/hall-01-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Вечеринка в лофте: диско-шары и конфетти"></picture><figcaption>Вечеринка</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/loft-03-640.webp 640w, assets/opt/loft-03-1024.webp 1024w"><img src="assets/opt/loft-03-1024.jpg" width="1500" height="1000" loading="lazy" decoding="async" alt="Коктейльные столы у панельной стены"></picture><figcaption>Фуршетная зона</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-04-640.webp 640w, assets/opt/ev-04-1024.webp 1024w, assets/opt/ev-04-1600.webp 1600w"><img src="assets/opt/ev-04-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Входная зона лофта с гардеробом"></picture><figcaption>Вход · гардероб</figcaption></figure>
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-05-640.webp 640w, assets/opt/ev-05-1024.webp 1024w, assets/opt/ev-05-1600.webp 1600w"><img src="assets/opt/ev-05-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Санузлы лофта"></picture><figcaption>Два санузла</figcaption></figure>
     </div>
   </div>
 </section>
@@ -736,7 +764,7 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
 <!-- ═══════════ ГРИМЕРНАЯ ═══════════ -->
 <section>
   <div class="wrap feat">
-    <div class="feat-img rv"><img src="assets/img/ev-01.jpg" alt="Гримерная: шесть мест с зеркалами и лампами"></div>
+    <div class="feat-img rv"><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-01-640.webp 640w, assets/opt/ev-01-1024.webp 1024w, assets/opt/ev-01-1600.webp 1600w"><img src="assets/opt/ev-01-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Гримерная: шесть мест с зеркалами и лампами"></picture></div>
     <div class="rv">
       <span class="lbl">Чего нет у соседей</span>
       <h2 class="h2" style="margin:14px 0 16px">Отдельная гримерная на шесть мест</h2>
@@ -853,7 +881,7 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
     </div>
 
     <div class="ct">
-      <form class="form rv" onsubmit="return sendForm(event)">
+      <form class="form rv">
         <label><span class="lbl">Как вас зовут</span><input name="name" required placeholder="Имя"></label>
         <label><span class="lbl">Телефон или мессенджер</span><input name="phone" type="tel" required placeholder="+7 ___ ___-__-__"></label>
         <label><span class="lbl">Дата и формат</span><input name="date" placeholder="14 марта, корпоратив на 60 человек"></label>
@@ -906,8 +934,8 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
       </div>
     </div>
     <div class="req">
-      ИП Шипов Егор Иванович · ИНН 503507240190 · ОГРНИП 322508100316286<br>
-      Счёт 40802810500008499705 · АО «ТБанк» · К/с 30101810145250000974 · БИК 044525974<br>
+      ИП Шипов Егор Иванович · ИНН 503507240190 · ОГРНИП 322508100316286 ·
+      <button id="reqBtn" style="color:inherit;border-bottom:1px solid currentColor">Банковские реквизиты</button><br>
       © 2026 SOLOFT.RU
     </div>
   </div>
@@ -922,6 +950,28 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
     <button class="lb-btn lb-next" onclick="lbGo(1)" aria-label="Следующее фото">›</button>
   </div>
   <div class="lb-cap"><b id="lb-cap"></b> <span id="lb-num"></span></div>
+</div>
+
+
+<!-- ═══════════ РЕКВИЗИТЫ ═══════════ -->
+<div class="md" id="reqModal" role="dialog" aria-modal="true" aria-labelledby="reqTitle">
+  <div class="md-w">
+    <div class="md-h">
+      <h3 id="reqTitle">Банковские реквизиты</h3>
+      <button class="md-x" data-md-close aria-label="Закрыть">×</button>
+    </div>
+    <div class="md-b">
+      <dl class="bank">
+        <div><dt>Получатель</dt><dd>ИП Шипов Егор Иванович</dd></div>
+        <div><dt>ИНН</dt><dd>503507240190</dd></div>
+        <div><dt>ОГРНИП</dt><dd>322508100316286</dd></div>
+        <div><dt>Расчётный счёт</dt><dd>40802810500008499705</dd></div>
+        <div><dt>Банк</dt><dd>АО «ТБанк»</dd></div>
+        <div><dt>Корр. счёт</dt><dd>30101810145250000974</dd></div>
+        <div><dt>БИК</dt><dd>044525974</dd></div>
+      </dl>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════ КАЛЕНДАРЬ ЗАНЯТОСТИ ═══════════ -->
@@ -1119,12 +1169,117 @@ function ckApply(v){
   setTimeout(()=>document.getElementById('ck').classList.add('show'), 1400);
 })();
 
-/* демо-форма: подключите приём заявок в этой функции */
-function sendForm(e){
-  e.preventDefault();
-  alert('Демо-форма. Подключите приём заявок (Formspree, форма Tilda, CRM или свой бэкенд) в функции sendForm.');
-  return false;
+/* ── окно реквизитов + удержание фокуса в модальных окнах ──────
+   Пока окно открыто, Tab не уводит на страницу за ним. */
+function trapFocus(box){
+  const sel = 'a[href],button:not([disabled]),input,textarea,select,iframe,[tabindex]:not([tabindex="-1"])';
+  return (e) => {
+    if (e.key !== 'Tab') return;
+    const f = [...box.querySelectorAll(sel)].filter(n => n.offsetParent !== null || n.tagName === 'IFRAME');
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  };
 }
+
+(function(){
+  const box = document.getElementById('reqModal');
+  if (!box) return;
+  const keep = trapFocus(box);
+  let last = null;
+  const open = () => {
+    last = document.activeElement;
+    box.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    addEventListener('keydown', keep);
+    setTimeout(() => box.querySelector('[data-md-close]')?.focus(), 60);
+  };
+  const close = () => {
+    box.classList.remove('open');
+    document.body.style.overflow = '';
+    removeEventListener('keydown', keep);
+    last?.focus();
+  };
+  document.getElementById('reqBtn')?.addEventListener('click', open);
+  box.querySelectorAll('[data-md-close]').forEach(b => b.addEventListener('click', close));
+  box.addEventListener('click', e => { if (e.target === box) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
+})();
+
+/* ── форма заявки: маска, проверка, состояния ─────────────────── */
+(function(){
+  const form = document.querySelector('.form');
+  if (!form) return;
+  const tel  = form.querySelector('input[name="phone"]');
+  const name = form.querySelector('input[name="name"]');
+  const btn  = form.querySelector('button[type="submit"]');
+  const ok   = form.querySelector('input[type="checkbox"]');
+
+  /* сообщения об ошибке рядом с полем */
+  const errBox = (input) => {
+    let e = input.parentElement.querySelector('.err');
+    if (!e) {
+      e = document.createElement('span');
+      e.className = 'err';
+      input.parentElement.appendChild(e);
+    }
+    return e;
+  };
+  const setErr = (input, text) => {
+    errBox(input).textContent = text;
+    input.setAttribute('aria-invalid', text ? 'true' : 'false');
+  };
+
+  /* +7 (999) 123-45-67 */
+  const mask = (v) => {
+    let d = v.replace(/\D/g, '');
+    if (d.startsWith('8')) d = '7' + d.slice(1);
+    if (!d.startsWith('7')) d = '7' + d;
+    d = d.slice(0, 11);
+    let out = '+7';
+    if (d.length > 1) out += ` (${d.slice(1, 4)}`;
+    if (d.length >= 5) out += `) ${d.slice(4, 7)}`;
+    if (d.length >= 8) out += `-${d.slice(7, 9)}`;
+    if (d.length >= 10) out += `-${d.slice(9, 11)}`;
+    return out;
+  };
+  tel?.addEventListener('focus', () => { if (!tel.value) tel.value = '+7 ('; });
+  tel?.addEventListener('input', () => {
+    const atEnd = tel.selectionStart === tel.value.length;
+    tel.value = mask(tel.value);
+    if (atEnd) tel.setSelectionRange(tel.value.length, tel.value.length);
+  });
+
+  const check = () => {
+    let good = true;
+    if (!name.value.trim()) { setErr(name, 'Напишите, как к вам обращаться'); good = false; }
+    else setErr(name, '');
+    if (tel.value.replace(/\D/g, '').length !== 11) { setErr(tel, 'Введите номер полностью'); good = false; }
+    else setErr(tel, '');
+    if (ok && !ok.checked) good = false;
+    return good;
+  };
+
+  form.removeAttribute('onsubmit');
+  form.setAttribute('novalidate', '');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!check()) { form.querySelector('[aria-invalid="true"]')?.focus(); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Отправляем…';
+
+    // TODO: подключить приём заявок — Formspree, CRM или свой обработчик.
+    await new Promise(r => setTimeout(r, 700));
+
+    const done = document.createElement('p');
+    done.className = 'sent';
+    done.setAttribute('role', 'status');
+    done.textContent = 'Запрос получен. Менеджер проверит дату и свяжется с вами.';
+    form.replaceChildren(done);
+  });
+})();
 </script>
 </body>
 </html>

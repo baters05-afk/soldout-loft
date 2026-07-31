@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /privacy.html
+Disallow: /agreement.html
+
+Sitemap: https://soldout-loft.vercel.app/sitemap.xml
