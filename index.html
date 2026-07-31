@@ -513,6 +513,13 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
 .form input[aria-invalid="true"]{border-color:#b4471f}
 .sent{padding:20px;border:1px solid var(--slate);color:var(--slate);font-size:.96rem}
 .btn[disabled]{opacity:.45;pointer-events:none}
+
+.route{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+@media (max-width:560px){.route .btn{flex:1;min-width:140px}}
+
+.trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.fail{margin-top:12px;font-size:.88rem;color:#b4471f}
+.fail a{text-decoration:underline;text-underline-offset:2px}
 </style>
 </head>
 <body>
@@ -885,13 +892,15 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
         <label><span class="lbl">Как вас зовут</span><input name="name" required placeholder="Имя"></label>
         <label><span class="lbl">Телефон или мессенджер</span><input name="phone" type="tel" required placeholder="+7 ___ ___-__-__"></label>
         <label><span class="lbl">Дата и формат</span><input name="date" placeholder="14 марта, корпоратив на 60 человек"></label>
+        <!-- ловушка для ботов: поле спрятано от людей, но заполняется скриптами -->
+        <input class="trap" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="cons"><input type="checkbox" required>
           <span>Даю <a href="agreement.html">согласие на обработку персональных данных</a>
             и принимаю <a href="privacy.html">политику конфиденциальности</a>.</span></label>
         <button class="btn btn-p" type="submit">Отправить запрос</button>
         <p class="lbl" style="color:var(--ink-40)">Или сразу в мессенджер — так быстрее</p>
         <div style="display:flex;gap:9px;flex-wrap:wrap">
-          <a class="btn btn-tg btn-sm" href="https://t.me/shipovegor" target="_blank" rel="noopener">Telegram @shipovegor</a>
+          <a class="btn btn-tg btn-sm" href="https://t.me/shipovegor" target="_blank" rel="noopener">Telegram</a>
           <a class="btn btn-o btn-sm" href="tel:+79853624558">Позвонить</a>
         </div>
       </form>
@@ -906,6 +915,16 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
         <div class="map">
           <iframe title="Карта: Малая Семёновская 5с10" loading="lazy" allowfullscreen
             src="https://yandex.ru/map-widget/v1/?text=Москва%2C%20Малая%20Семёновская%205%20стр%2010&z=16"></iframe>
+        </div>
+        <!-- rtext=~адрес: точка отправления пустая, Яндекс подставит текущее
+             местоположение пользователя; rtt задаёт способ передвижения -->
+        <div class="route">
+          <a class="btn btn-p btn-sm"
+             href="https://yandex.ru/maps/?rtext=~%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB.%20%D0%9C%D0%B0%D0%BB%D0%B0%D1%8F%20%D0%A1%D0%B5%D0%BC%D1%91%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%205%20%D1%81%D1%82%D1%80%2010&amp;rtt=auto"
+             target="_blank" rel="noopener">Построить маршрут</a>
+          <a class="btn btn-o btn-sm"
+             href="https://yandex.ru/maps/?rtext=~%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB.%20%D0%9C%D0%B0%D0%BB%D0%B0%D1%8F%20%D0%A1%D0%B5%D0%BC%D1%91%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%205%20%D1%81%D1%82%D1%80%2010&amp;rtt=mt"
+             target="_blank" rel="noopener">На транспорте</a>
         </div>
       </div>
     </div>
@@ -928,7 +947,7 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
         <h4>Связь</h4>
         <a href="tel:+79853624558">+7 985 362-45-58</a>
         <a href="mailto:soldout-loft@yandex.ru">soldout-loft@yandex.ru</a>
-        <a href="https://t.me/shipovegor" target="_blank" rel="noopener">Telegram @shipovegor</a>
+        <a href="https://t.me/shipovegor" target="_blank" rel="noopener">Telegram</a>
         <a href="privacy.html">Политика конфиденциальности</a>
         <a href="agreement.html">Согласие на обработку данных</a>
       </div>
@@ -1270,14 +1289,40 @@ function trapFocus(box){
     btn.disabled = true;
     btn.textContent = 'Отправляем…';
 
-    // TODO: подключить приём заявок — Formspree, CRM или свой обработчик.
-    await new Promise(r => setTimeout(r, 700));
+    try {
+      const r = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:  name.value.trim(),
+          phone: tel.value,
+          date:  form.querySelector('input[name="date"]')?.value.trim() || '',
+          company: form.querySelector('input[name="company"]')?.value || ''
+        })
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || !data.ok) throw new Error(data.error || 'Не удалось отправить');
 
-    const done = document.createElement('p');
-    done.className = 'sent';
-    done.setAttribute('role', 'status');
-    done.textContent = 'Запрос получен. Менеджер проверит дату и свяжется с вами.';
-    form.replaceChildren(done);
+      const done = document.createElement('p');
+      done.className = 'sent';
+      done.setAttribute('role', 'status');
+      done.textContent = 'Запрос получен. Менеджер проверит дату и свяжется с вами.';
+      form.replaceChildren(done);
+    } catch (err) {
+      // заявка не должна теряться: показываем запасной путь связи
+      let box = form.querySelector('.fail');
+      if (!box) {
+        box = document.createElement('p');
+        box.className = 'fail';
+        box.setAttribute('role', 'alert');
+        btn.insertAdjacentElement('afterend', box);
+      }
+      box.innerHTML = 'Не получилось отправить. Напишите в ' +
+        '<a href="https://t.me/shipovegor" target="_blank" rel="noopener">Telegram</a> ' +
+        'или позвоните <a href="tel:+79853624558">+7 985 362-45-58</a>.';
+      btn.disabled = false;
+      btn.textContent = 'Отправить запрос';
+    }
   });
 })();
 </script>
