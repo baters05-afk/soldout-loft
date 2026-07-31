@@ -409,6 +409,37 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
   .cal-fr iframe{height:56vh}
 }
 
+/* ───────── просмотр фото ───────── */
+.gal figure{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:120;display:grid;grid-template-rows:1fr auto;
+  background:rgba(0,8,13,.94);opacity:0;visibility:hidden;
+  transition:opacity .35s var(--ease),visibility .35s}
+.lb.open{opacity:1;visibility:visible}
+.lb-s{position:relative;display:grid;place-items:center;padding:56px 76px 12px;min-height:0}
+.lb-s img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.8);
+  transform:scale(.97);opacity:0;transition:transform .45s var(--ease),opacity .35s}
+.lb.open .lb-s img{transform:none;opacity:1}
+.lb-cap{padding:14px 24px 26px;text-align:center;color:rgba(246,243,239,.72);
+  font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
+.lb-cap b{color:#fff;font-weight:500}
+.lb-btn{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);
+  color:#fff;cursor:pointer;display:grid;place-items:center;font-size:1.5rem;line-height:1;
+  font-family:var(--font);backdrop-filter:blur(8px);transition:.25s}
+.lb-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.5)}
+.lb-prev{left:16px}.lb-next{right:16px}
+.lb-x{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;
+  cursor:pointer;font-size:1.5rem;line-height:1;font-family:var(--font);
+  backdrop-filter:blur(8px);transition:.25s;z-index:2}
+.lb-x:hover{background:rgba(255,255,255,.18);transform:rotate(90deg)}
+@media (max-width:640px){
+  .lb-s{padding:56px 12px 8px}
+  .lb-btn{width:44px;height:44px;top:auto;bottom:-4px;transform:none}
+  .lb-prev{left:24px}.lb-next{right:24px}
+}
+
 /* ───────── уведомление о cookie ───────── */
 .ck{
   position:fixed;left:16px;bottom:16px;z-index:100;max-width:430px;
@@ -686,13 +717,18 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
     </div>
 
     <div class="gal rv">
-      <figure class="wide tall"><img src="assets/img/ev-02.jpg" alt="Зал днём"><figcaption>Зал днём · 175 м²</figcaption></figure>
-      <figure><img src="assets/img/ev-01.jpg" alt="Гримерная"><figcaption>Гримерная · 6 мест</figcaption></figure>
-      <figure><img src="assets/img/ev-03.jpg" alt="Театральная рассадка"><figcaption>Театр · до 80</figcaption></figure>
-      <figure><img src="assets/img/hall-01.jpg" alt="Вечеринка"><figcaption>Вечеринка</figcaption></figure>
-      <figure><img src="assets/img/ev-04.jpg" alt="Входная зона"><figcaption>Вход · гардероб</figcaption></figure>
-      <figure><img src="assets/img/banquet.jpg" alt="Банкетная рассадка с круглыми столами"><figcaption>Банкет · до 50</figcaption></figure>
-      <figure><img src="assets/img/ev-05.jpg" alt="Санузлы"><figcaption>Два санузла</figcaption></figure>
+      <figure class="wide tall"><img src="assets/img/ev-02.jpg" alt="Зал лофта днём: дневной свет из арочных окон, кирпич и гирлянды"><figcaption>Зал днём · 175 м²</figcaption></figure>
+      <figure><img src="assets/img/loft-02.jpg" alt="Зона отдыха у окон: кожаные диваны и белая циклорамная стена"><figcaption>Зона отдыха</figcaption></figure>
+      <figure><img src="assets/img/ev-01.jpg" alt="Гримерная лофта: шесть мест с зеркалами и подсветкой"><figcaption>Гримерная · 6 мест</figcaption></figure>
+      <figure><img src="assets/img/loft-01.jpg" alt="Арочный проход между зонами лофта"><figcaption>Арочный проход</figcaption></figure>
+      <figure><img src="assets/img/banquet.jpg" alt="Банкетная рассадка: круглые столы под белым текстилем"><figcaption>Банкет · до 50</figcaption></figure>
+      <figure><img src="assets/img/loft-04.jpg" alt="Кирпичная стена с высоким окном и люстрой"><figcaption>Кирпич и свет</figcaption></figure>
+      <figure><img src="assets/img/ev-03.jpg" alt="Театральная рассадка: ряды стульев перед экраном"><figcaption>Театр · до 80</figcaption></figure>
+      <figure><img src="assets/img/loft-05.jpg" alt="Экран и звуковое оборудование для конференции"><figcaption>Экран 3 м и звук</figcaption></figure>
+      <figure><img src="assets/img/hall-01.jpg" alt="Вечеринка в лофте: диско-шары и конфетти"><figcaption>Вечеринка</figcaption></figure>
+      <figure><img src="assets/img/loft-03.jpg" alt="Коктейльные столы у панельной стены"><figcaption>Фуршетная зона</figcaption></figure>
+      <figure><img src="assets/img/ev-04.jpg" alt="Входная зона лофта с гардеробом"><figcaption>Вход · гардероб</figcaption></figure>
+      <figure><img src="assets/img/ev-05.jpg" alt="Санузлы лофта"><figcaption>Два санузла</figcaption></figure>
     </div>
   </div>
 </section>
@@ -877,6 +913,17 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
   </div>
 </footer>
 
+<!-- ═══════════ ПРОСМОТР ФОТО ═══════════ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+  <button class="lb-x" onclick="lbClose()" aria-label="Закрыть">×</button>
+  <div class="lb-s">
+    <button class="lb-btn lb-prev" onclick="lbGo(-1)" aria-label="Предыдущее фото">‹</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-btn lb-next" onclick="lbGo(1)" aria-label="Следующее фото">›</button>
+  </div>
+  <div class="lb-cap"><b id="lb-cap"></b> <span id="lb-num"></span></div>
+</div>
+
 <!-- ═══════════ КАЛЕНДАРЬ ЗАНЯТОСТИ ═══════════ -->
 <div class="md" id="cal" role="dialog" aria-modal="true" aria-label="Календарь занятости лофта">
   <div class="md-w">
@@ -991,6 +1038,48 @@ if (!reduce && hmi) {
   };
   par(); addEventListener('scroll', par, {passive:true});
 }
+
+/* просмотр фото: клик по карточке галереи открывает снимок целиком */
+const lbEl = document.getElementById('lb');
+const lbImg = document.getElementById('lb-img');
+const shots = [...document.querySelectorAll('.gal figure')].map(f => ({
+  src: f.querySelector('img').getAttribute('src'),
+  alt: f.querySelector('img').alt,
+  cap: (f.querySelector('figcaption') || {}).textContent || ''
+}));
+let lbI = 0;
+function lbShow(i){
+  lbI = (i + shots.length) % shots.length;
+  const s = shots[lbI];
+  lbImg.src = s.src; lbImg.alt = s.alt;
+  document.getElementById('lb-cap').textContent = s.cap;
+  document.getElementById('lb-num').textContent = `${lbI + 1} / ${shots.length}`;
+}
+function lbOpen(i){ lbShow(i); lbEl.classList.add('open'); document.body.style.overflow='hidden'; }
+function lbClose(){ lbEl.classList.remove('open'); document.body.style.overflow=''; }
+function lbGo(d){ lbShow(lbI + d); }
+document.querySelectorAll('.gal figure').forEach((f, i) => {
+  f.addEventListener('click', () => lbOpen(i));
+  f.setAttribute('tabindex', '0');
+  f.setAttribute('role', 'button');
+  f.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(i); }
+  });
+});
+lbEl.addEventListener('click', e => { if (e.target === lbEl || e.target.classList.contains('lb-s')) lbClose(); });
+addEventListener('keydown', e => {
+  if (!lbEl.classList.contains('open')) return;
+  if (e.key === 'Escape') lbClose();
+  if (e.key === 'ArrowLeft') lbGo(-1);
+  if (e.key === 'ArrowRight') lbGo(1);
+});
+// свайп на телефоне
+let tx = 0;
+lbEl.addEventListener('touchstart', e => tx = e.changedTouches[0].clientX, {passive:true});
+lbEl.addEventListener('touchend', e => {
+  const d = e.changedTouches[0].clientX - tx;
+  if (Math.abs(d) > 55) lbGo(d < 0 ? 1 : -1);
+}, {passive:true});
 
 /* календарь занятости: iframe грузится только при первом открытии,
    чтобы не тянуть Google на каждой загрузке страницы */
