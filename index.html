@@ -520,6 +520,11 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
 .trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
 .fail{margin-top:12px;font-size:.88rem;color:#b4471f}
 .fail a{text-decoration:underline;text-underline-offset:2px}
+
+/* <picture> — только контейнер для выбора формата, своей коробки у него быть
+   не должно: иначе img с position:absolute считается от него, а не от карточки,
+   и схлопывается в нулевую высоту. */
+picture{display:contents}
 </style>
 </head>
 <body>
