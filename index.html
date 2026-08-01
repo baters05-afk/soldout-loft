@@ -1227,6 +1227,11 @@ function trapFocus(box){
 })();
 
 /* ── форма заявки: маска, проверка, состояния ─────────────────── */
+/* Адрес обработчика заявок.
+   На PHP-хостинге (Timeweb, Beget, REG.RU) — 'api/lead.php'.
+   На serverless-платформе — '/api/lead'. Меняется только здесь. */
+const LEAD_URL = 'api/lead.php';
+
 (function(){
   const form = document.querySelector('.form');
   if (!form) return;
@@ -1290,7 +1295,7 @@ function trapFocus(box){
     btn.textContent = 'Отправляем…';
 
     try {
-      const r = await fetch('/api/lead', {
+      const r = await fetch(LEAD_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
