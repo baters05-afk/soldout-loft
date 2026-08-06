@@ -286,9 +286,10 @@ const LEAD_URL = (window.SOLDOUT_LEAD_URL || '').trim() || 'api/lead.php';
         box.setAttribute('role', 'alert');
         btn.insertAdjacentElement('afterend', box);
       }
-      box.innerHTML = 'Не получилось отправить. Напишите в ' +
-        '<a href="https://t.me/shipovegor" target="_blank" rel="noopener">Telegram</a> ' +
-        'или позвоните <a href="tel:+79853624558">+7 985 362-45-58</a>.';
+      box.innerHTML = 'Не получилось отправить. Напишите на ' +
+        '<a href="mailto:soldout-loft@yandex.ru">soldout-loft@yandex.ru</a>, ' +
+        'позвоните <a href="tel:+79853624558">+7 985 362-45-58</a> ' +
+        'или в <a href="https://t.me/shipovegor" target="_blank" rel="noopener">Telegram</a>.';
       btn.disabled = false;
       btn.textContent = 'Отправить запрос';
     }
