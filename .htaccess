@@ -1,0 +1,115 @@
+# ═══════════════════════════════════════════════════════════════════
+#  SOLDOUT LOFT — настройки Apache для Таймвеба.
+#  Заменяет vercel.json, который использовался на прежнем хостинге.
+# ═══════════════════════════════════════════════════════════════════
+
+AddDefaultCharset UTF-8
+DirectoryIndex index.html
+
+# Не показывать список файлов, если в папке нет index
+Options -Indexes
+
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# ═════════════════════════════════════════════════════════════════
+#  ВНИМАНИЕ. Три строки ниже закомментированы намеренно.
+#
+#  Снимите решётки ТОЛЬКО ПОСЛЕ того, как выпустите сертификат
+#  и убедитесь, что https://soloft.ru открывается без ошибки.
+#
+#  Если включить раньше — посетители пойдут на https, которого
+#  ещё нет, и увидят предупреждение браузера вместо сайта.
+#
+#  Что делают: сводят все варианты написания к одному адресу
+#  https://soloft.ru — без www и всегда по шифрованному соединению.
+#  Без этого поисковики считают www и не-www разными сайтами
+#  и делят между ними вес страницы.
+# ═════════════════════════════════════════════════════════════════
+
+# RewriteCond %{HTTP_HOST} ^www\.soloft\.ru$ [NC]
+# RewriteRule ^(.*)$ https://soloft.ru/$1 [R=301,L]
+#
+# RewriteCond %{HTTP_HOST} ^(www\.)?soloft\.ru$ [NC]
+# RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+# RewriteRule ^(.*)$ https://soloft.ru/$1 [R=301,L]
+
+
+# ── Чистые адреса страниц ──────────────────────────────────────────
+# Работают на любом домене, включая технический адрес Таймвеба,
+# поэтому проверять сайт до переключения DNS они не мешают.
+
+# /index.html → /
+RewriteCond %{THE_REQUEST} \s/+([^?\s]*?)index\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# /privacy.html → /privacy — адрес без расширения считаем основным
+RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# /privacy/ → /privacy — убираем хвостовой слэш у страниц
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# /privacy → privacy.html — подмена внутри сервера, адрес в строке
+# браузера не меняется. Это замена cleanUrls из vercel.json.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)$ /$1.html [L]
+</IfModule>
+
+
+ErrorDocument 404 /404.html
+
+
+# ── Настройки почты закрыты снаружи ────────────────────────────────
+# В api/config.php лежит пароль от ящика. Без этого правила файл
+# можно было бы скачать по прямой ссылке.
+<Files ~ "^config.*\.php$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</Files>
+
+
+# ── Кэш ────────────────────────────────────────────────────────────
+# Стили и скрипт — с обязательной перепроверкой. Ровно на этом мы уже
+# обожглись: заголовок immutable запирал старую версию в браузере на
+# год, и правки не доходили до тех, кто был на сайте раньше.
+# В адресах стилей и скрипта стоит ?v=, его меняем при каждой правке.
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(html|json|xml|webmanifest)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(jpg|jpeg|png|webp|svg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=2592000, must-revalidate"
+  </FilesMatch>
+
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+
+# ── Сжатие ─────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType application/manifest+json .webmanifest
+</IfModule>

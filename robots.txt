@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
+
+# Юридические страницы доступны людям, но в поиске не нужны.
+# Закрыты оба варианта адреса: с расширением и без.
+Disallow: /privacy
 Disallow: /privacy.html
+Disallow: /agreement
 Disallow: /agreement.html
 
-Sitemap: https://soldout-loft.vercel.app/sitemap.xml
+Sitemap: https://soloft.ru/sitemap.xml
