@@ -48,19 +48,6 @@ function countTo(el){
   requestAnimationFrame(tick);
 }
 
-/* мягкое свечение за курсором в первом экране */
-const glow = document.getElementById('glow'), hero = document.querySelector('.hero');
-if (!reduce) {
-  glow.style.opacity = 0;
-  hero.addEventListener('pointermove', e => {
-    const r = hero.getBoundingClientRect();
-    glow.style.opacity = 1;
-    glow.style.left = (e.clientX - r.left) + 'px';
-    glow.style.top  = (e.clientY - r.top)  + 'px';
-  });
-  hero.addEventListener('pointerleave', () => glow.style.opacity = 0);
-}
-
 /* лёгкий параллакс кадра в герое */
 const hmi = document.getElementById('hmi'), hm = document.getElementById('hm');
 if (!reduce && hmi) {
