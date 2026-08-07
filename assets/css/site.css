@@ -42,7 +42,7 @@ a{color:inherit;text-decoration:none}
 .pattern>*{position:relative;z-index:1}
 .pattern::before{
   content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.10;
-  background-image:url("assets/brand/tile-slate.png");
+  background-image:url("/assets/brand/tile-slate.png");
   background-size:150px 150px;
   -webkit-mask-image:linear-gradient(180deg,#000,transparent 74%);
   mask-image:linear-gradient(180deg,#000,transparent 74%);
@@ -268,7 +268,7 @@ section{padding-block:clamp(64px,8vw,120px)}
 /* ───────── призыв + контакты ───────── */
 .cta{background:var(--slate);color:#fff;position:relative;overflow:hidden;text-align:center}
 .cta::before{content:'';position:absolute;inset:0;opacity:.13;
-  background-image:url("assets/brand/tile-bone.png");background-size:150px 150px}
+  background-image:url("/assets/brand/tile-bone.png");background-size:150px 150px}
 .cta>*{position:relative;z-index:2}
 .cta .h2{margin-bottom:16px}
 .cta p{color:rgba(255,255,255,.78);max-width:48ch;margin:0 auto 30px;font-weight:300}
