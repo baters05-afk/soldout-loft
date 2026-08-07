@@ -124,11 +124,13 @@ nav a:hover{color:var(--ink);background:rgba(0,8,13,.05)}
 
 /* арочный кадр — форма прямо из гайда */
 .hero-media{position:relative;margin-top:clamp(40px,6vw,70px);border-radius:var(--arch-w);
-  overflow:hidden;aspect-ratio:16/9;background:var(--grey);
+  overflow:hidden;aspect-ratio:16/10;background:var(--grey);
   opacity:0;animation:fade 1.3s var(--ease) .3s forwards}
 .hero-media img{width:100%;height:118%;object-fit:cover;will-change:transform}
+/* Затемнение убрано: кадр светлый, и зал должен читаться светлым.
+   Осталась едва заметная подложка снизу, чтобы край не сливался с фоном. */
 .hero-media::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 55%,rgba(0,8,13,.5))}
+  background:linear-gradient(180deg,transparent 82%,rgba(0,8,13,.12))}
 
 /* плитки-показатели */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
