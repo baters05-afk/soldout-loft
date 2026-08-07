@@ -29,7 +29,7 @@
 <!-- Jost — ближайший бесплатный аналог фирменного NAMU Pro: тот же геометрический
      гротеск с одноэтажной «а» и полной кириллицей -->
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="assets/js/config.js"></script>
+<script src="assets/js/config.js?v=20260807"></script>
 <script>
   // Анимации включаются только при живом JS и если пользователь их не отключил.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -79,12 +79,17 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="assets/css/site.css">
+<!-- ?v= в адресах стилей, скриптов и логотипа — не убирать без замены номера.
+     Файлы какое-то время отдавались с Cache-Control: immutable на год, и Safari
+     после этого не перезапрашивает их даже при перезагрузке. Сменить номер версии —
+     единственный способ отдать посетителю новый файл. Правится при каждом
+     изменении site.css / site.js. -->
+<link rel="stylesheet" href="assets/css/site.css?v=20260807">
 </head>
 <body>
 
 <header id="hdr">
-  <a href="#top" class="logo"><img src="assets/brand/logo-h-dark-c.png" alt="SOLDOUT"></a>
+  <a href="#top" class="logo"><img src="assets/brand/logo-h-dark-c.png?v=20260807" alt="SOLDOUT"></a>
   <nav>
     <a href="#formats">Форматы</a>
     <a href="#included">Включено</a>
@@ -493,7 +498,7 @@
   <div class="wrap">
     <div class="fg">
       <div>
-        <img src="assets/brand/logo-h-dark-c.png" alt="SOLDOUT" style="height:26px;width:auto;margin-bottom:15px">
+        <img src="assets/brand/logo-h-dark-c.png?v=20260807" alt="SOLDOUT" style="height:26px;width:auto;margin-bottom:15px">
         <p>Лофт 175 м² для мероприятий<br>в 5 минутах от м. Электрозаводская.</p>
       </div>
       <div>
@@ -592,6 +597,6 @@
   <a href="tel:+79853624558">Звонок</a>
 </div>
 
-<script src="assets/js/site.js" defer></script>
+<script src="assets/js/site.js?v=20260807" defer></script>
 </body>
 </html>
