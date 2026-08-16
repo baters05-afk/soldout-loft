@@ -443,6 +443,23 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
    и схлопывается в нулевую высоту. */
 picture{display:contents}
 
+/* ───────── компактный контактный блок ───────── */
+#contact{padding-block:clamp(56px,5vw,78px)}
+#contact .ct{align-items:start}
+#contact .sh{margin-bottom:clamp(24px,3vw,36px)}
+#contact .form{gap:10px}
+#contact .form label{gap:5px}
+#contact .form input{padding-block:12px}
+#contact .form .cons{display:flex;align-items:center;gap:10px;min-height:32px}
+#contact .cons input{width:17px;height:17px;margin:0;flex:0 0 17px}
+#contact .cons span{display:block;line-height:1.35}
+#contact .info>div{padding-block:13px}
+#contact .map{margin-top:16px}
+#contact .map iframe{height:250px}
+.contact-fast{color:var(--ink-40);margin-top:2px}
+.contact-messengers{display:flex;gap:12px;flex-wrap:wrap}
+.contact-messengers .btn{min-width:168px;padding-inline:32px}
+
 /* ───────── композиционный и responsive quality pass · 2026-08-16 ───────── */
 html{scroll-padding-top:86px}
 .logo,nav a{min-height:44px;display:flex;align-items:center}
@@ -486,4 +503,8 @@ html{scroll-padding-top:86px}
   .stat{padding:18px 16px}
   .faq summary{min-height:58px;display:flex;align-items:center}
   .fg a{min-height:44px;display:flex;align-items:center;margin:0}
+  #contact{padding-block:52px}
+  #contact .map iframe{height:230px}
+  .contact-messengers{display:grid;grid-template-columns:1fr 1fr}
+  .contact-messengers .btn{width:100%;min-width:0;padding-inline:18px}
 }
