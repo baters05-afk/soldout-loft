@@ -445,9 +445,9 @@ picture{display:contents}
 
 /* ───────── компактный контактный блок ───────── */
 #contact{padding-block:clamp(56px,5vw,78px)}
-#contact .ct{align-items:start}
+#contact .ct{align-items:stretch}
 #contact .sh{margin-bottom:clamp(24px,3vw,36px)}
-#contact .form{gap:10px}
+#contact .form{gap:10px;height:100%;grid-template-rows:repeat(5,auto) minmax(28px,1fr) auto}
 #contact .form label{gap:5px}
 #contact .form input{padding-block:12px}
 #contact .form .cons{display:flex;align-items:center;gap:10px;min-height:32px}
@@ -456,7 +456,7 @@ picture{display:contents}
 #contact .info>div{padding-block:13px}
 #contact .map{margin-top:16px}
 #contact .map iframe{height:250px}
-.contact-fast{color:var(--ink-40);margin-top:2px}
+.contact-fast{color:var(--ink-40);margin-top:2px;align-self:end}
 .contact-messengers{display:flex;gap:12px;flex-wrap:wrap}
 .contact-messengers .btn{min-width:168px;padding-inline:32px}
 
@@ -504,6 +504,8 @@ html{scroll-padding-top:86px}
   .faq summary{min-height:58px;display:flex;align-items:center}
   .fg a{min-height:44px;display:flex;align-items:center;margin:0}
   #contact{padding-block:52px}
+  #contact .ct{align-items:start}
+  #contact .form{height:auto;grid-template-rows:none}
   #contact .map iframe{height:230px}
   .contact-messengers{display:grid;grid-template-columns:1fr 1fr}
   .contact-messengers .btn{width:100%;min-width:0;padding-inline:18px}
