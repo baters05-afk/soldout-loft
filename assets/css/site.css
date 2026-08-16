@@ -29,7 +29,7 @@ html{scroll-behavior:smooth}
 body{
   background:var(--bone-l);color:var(--ink);
   font-family:var(--font);font-size:17px;line-height:1.6;font-weight:400;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -442,3 +442,48 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
    не должно: иначе img с position:absolute считается от него, а не от карточки,
    и схлопывается в нулевую высоту. */
 picture{display:contents}
+
+/* ───────── композиционный и responsive quality pass · 2026-08-16 ───────── */
+html{scroll-padding-top:86px}
+.logo,nav a{min-height:44px;display:flex;align-items:center}
+.hd-tel{min-height:44px;align-items:center}
+.btn:focus-visible,a:focus-visible,button:focus-visible,.gal figure:focus-visible,.faq summary:focus-visible{
+  outline:3px solid rgba(63,90,115,.48);outline-offset:3px
+}
+.nav-toggle{display:none;width:48px;height:48px;border:0;background:transparent;padding:12px;cursor:pointer}
+.nav-toggle span{display:block;width:24px;height:1px;background:var(--ink);margin:7px auto;transition:transform .25s}
+.nav-toggle[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
+
+@media (min-width:981px){
+  .hero{padding-top:116px;padding-bottom:clamp(48px,5vw,72px)}
+  .hero-in{display:grid;grid-template-columns:minmax(0,.88fr) minmax(480px,1.12fr);column-gap:clamp(48px,7vw,104px);align-items:center}
+  .hero .lbl,.hero .h1,.hero-sub,.hero-act{grid-column:1}
+  .hero .lbl{align-self:end}
+  .hero .h1{font-size:clamp(3.2rem,5vw,5.35rem)}
+  .hero-media{grid-column:2;grid-row:1/5;margin:0;aspect-ratio:4/5;max-height:700px}
+  .hero-media img{height:100%;object-position:center}
+  .stats{grid-column:1/-1;margin-top:42px}
+  section{padding-block:clamp(72px,7vw,104px)}
+}
+
+@media (max-width:980px){
+  .nav-toggle{display:block}
+  header nav.open{display:flex;position:fixed;inset:72px 0 0;z-index:-1;flex-direction:column;align-items:stretch;
+    padding:28px var(--pad);gap:0;background:rgba(242,239,236,.98);backdrop-filter:blur(16px)}
+  header nav.open a{font-size:1.5rem;border-bottom:1px solid var(--ink-12);border-radius:0;padding:15px 4px;min-height:58px}
+  body.nav-open{overflow:hidden}
+}
+
+@media (max-width:640px){
+  header{padding-block:10px}
+  header.stuck{padding-block:8px}
+  .hd-r>.btn{display:none}
+  .hero{padding-top:94px}
+  .hero-sub{margin-block:22px 28px}
+  .hero-act .btn{min-height:48px}
+  .hero-media{margin-top:34px}
+  .stat{padding:18px 16px}
+  .faq summary{min-height:58px;display:flex;align-items:center}
+  .fg a{min-height:44px;display:flex;align-items:center;margin:0}
+}

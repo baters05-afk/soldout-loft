@@ -7,6 +7,25 @@ const hdr = document.getElementById('hdr');
 const onScroll = () => hdr.classList.toggle('stuck', scrollY > 30);
 onScroll(); addEventListener('scroll', onScroll, {passive:true});
 
+/* доступная мобильная навигация */
+const navToggle = document.querySelector('.nav-toggle');
+const siteNav = document.getElementById('site-nav');
+const closeNav = () => {
+  siteNav?.classList.remove('open');
+  navToggle?.setAttribute('aria-expanded', 'false');
+  navToggle?.setAttribute('aria-label', 'Открыть меню');
+  document.body.classList.remove('nav-open');
+};
+navToggle?.addEventListener('click', () => {
+  const open = !siteNav.classList.contains('open');
+  siteNav.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+  navToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  document.body.classList.toggle('nav-open', open);
+});
+siteNav?.addEventListener('click', e => { if (e.target.closest('a')) closeNav(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
 /* появление блоков + счётчики */
 const revealed = new Set();
 function reveal(el, delay = 0){

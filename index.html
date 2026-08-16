@@ -84,13 +84,13 @@
      после этого не перезапрашивает их даже при перезагрузке. Сменить номер версии —
      единственный способ отдать посетителю новый файл. Правится при каждом
      изменении site.css / site.js. -->
-<link rel="stylesheet" href="assets/css/site.css?v=20260807">
+<link rel="stylesheet" href="assets/css/site.css?v=20260816">
 </head>
 <body>
 
 <header id="hdr">
   <a href="#top" class="logo"><img src="assets/brand/logo-h-dark-c.png?v=20260807" alt="SOLDOUT"></a>
-  <nav>
+  <nav id="site-nav" aria-label="Основная навигация">
     <a href="#formats">Форматы</a>
     <a href="#included">Включено</a>
     <a href="#price">Цены</a>
@@ -100,6 +100,7 @@
   <div class="hd-r">
     <a class="hd-tel" href="tel:+79853624558">+7 985 362-45-58</a>
     <a class="btn btn-p btn-sm" href="#contact" data-cal>Проверить дату</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню"><span></span><span></span></button>
   </div>
 </header>
 
@@ -597,6 +598,6 @@
   <a href="tel:+79853624558">Звонок</a>
 </div>
 
-<script src="assets/js/site.js?v=20260807" defer></script>
+<script src="assets/js/site.js?v=20260816" defer></script>
 </body>
 </html>
