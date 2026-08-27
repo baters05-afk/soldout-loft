@@ -106,6 +106,14 @@ document.querySelectorAll('.gal figure').forEach((f, i) => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(i); }
   });
 });
+const galTrack = document.querySelector('.gal');
+window.galGo = function(dir){
+  if (!galTrack) return;
+  const card = galTrack.querySelector('figure');
+  const gap = parseFloat(getComputedStyle(galTrack).gap) || 14;
+  const step = (card ? card.getBoundingClientRect().width : 400) + gap;
+  galTrack.scrollLeft += step * dir;
+};
 lbEl.addEventListener('click', e => { if (e.target === lbEl || e.target.classList.contains('lb-s')) lbClose(); });
 addEventListener('keydown', e => {
   if (!lbEl.classList.contains('open')) return;

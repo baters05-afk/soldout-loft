@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Аренда лофта в Москве для мероприятий — SOLDOUT, 175 м² у м. Электрозаводская</title>
 <meta name="description" content="Аренда лофта для мероприятий в Москве от 4 000 ₽/час. Лофт 175 м² с гримеркой в 5 минутах от м. Электрозаводская: свадьбы, корпоративы, дни рождения, съёмки, конференции. До 100 гостей, звук, проектор и администратор включены. Без ограничений по шуму, круглосуточно.">
 <meta name="keywords" content="аренда лофта Москва, лофт для мероприятий, лофт Электрозаводская, лофт для свадьбы, лофт для корпоратива, лофт для съёмок, банкетный зал Москва, лофт почасово, площадка для мероприятий">
@@ -85,16 +85,20 @@
      после этого не перезапрашивает их даже при перезагрузке. Сменить номер версии —
      единственный способ отдать посетителю новый файл. Правится при каждом
      изменении site.css / site.js. -->
-<link rel="stylesheet" href="assets/css/site.css?v=20260816-4">
+<link rel="stylesheet" href="assets/css/site.css?v=20260826-11">
 </head>
 <body>
 
 <header id="hdr">
-  <a href="#top" class="logo"><img src="assets/brand/logo-h-dark-c.png?v=20260807" alt="SOLDOUT"></a>
+  <a href="#top" class="logo">
+    <img class="logo-dark" src="assets/brand/logo-h-dark-c.png?v=20260807" alt="SOLDOUT">
+    <img class="logo-light" src="assets/brand/logo-h-light-c.png?v=20260807" alt="">
+  </a>
   <nav id="site-nav" aria-label="Основная навигация">
     <a href="#formats">Форматы</a>
     <a href="#included">Включено</a>
     <a href="#price">Цены</a>
+    <a href="#catering">Кейтеринг</a>
     <a href="#space">Пространство</a>
     <a href="#faq">Вопросы</a>
   </nav>
@@ -106,7 +110,10 @@
 </header>
 
 <!-- ═══════════ ГЕРОЙ ═══════════ -->
-<section class="hero pattern" id="top">
+<section class="hero" id="top">
+  <div class="hero-media" id="hm">
+    <picture><source type="image/webp" sizes="100vw" srcset="assets/opt/hero-640.webp 640w, assets/opt/hero-1024.webp 1024w, assets/opt/hero-1600.webp 1600w"><img id="hmi" src="assets/opt/hero-1024.jpg" width="3000" height="2000" fetchpriority="high" decoding="async" alt="Зал лофта SOLDOUT: кирпич, арочные окна, гирлянды"></picture>
+  </div>
   <div class="wrap hero-in">
     <span class="lbl">Малая Семёновская 5 · 5 минут от Электрозаводской</span>
 
@@ -118,18 +125,13 @@
 
     <p class="lead hero-sub">
       Аренда лофта для мероприятий в Москве: 175 м² света, кирпича и гримерка на шесть мест.
-      Звук, проектор и администратор уже в стоимости часа — искать подрядчиков
-      и доплачивать за технику не придётся.
+      Звук, проектор и администратор уже в стоимости часа.
     </p>
 
     <div class="hero-act">
       <a class="btn btn-p" href="#contact" data-cal>Узнать, свободна ли дата</a>
       <a class="btn btn-tg" href="https://t.me/shipovegor" target="_blank" rel="noopener">Telegram</a>
-      <span class="hero-note">Отвечаем за 15 минут<br>ежедневно с 10:00 до 22:00</span>
-    </div>
-
-    <div class="hero-media" id="hm">
-      <picture><source type="image/webp" sizes="100vw" srcset="assets/opt/hero-640.webp 640w, assets/opt/hero-1024.webp 1024w, assets/opt/hero-1600.webp 1600w"><img src="assets/opt/hero-1024.jpg" width="3000" height="2000" fetchpriority="high" decoding="async" alt="Зал лофта SOLDOUT: кирпич, арочные окна, гирлянды"></picture>
+      <span class="hero-note">Отвечаем за 15 минут · ежедневно с 10:00 до 22:00</span>
     </div>
 
     <div class="stats">
@@ -307,17 +309,61 @@
   </div>
 </section>
 
+<!-- ═══════════ КЕЙТЕРИНГ ═══════════ -->
+<section id="catering">
+  <div class="wrap">
+    <div class="cat-head rv">
+      <span class="lbl">Кейтеринг</span>
+      <h2 class="h2">Готовое меню без хлопот</h2>
+    </div>
+    <div class="cat">
+      <div class="cat-collage rv">
+        <figure class="cat-a"><img src="assets/opt/cater-buffet.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Фуршетный стол: канапе, закуски и цветы"></figure>
+        <figure class="cat-b"><img src="assets/opt/cater-stand.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Мини-бургеры и десерты на деревянной стойке"></figure>
+        <figure class="cat-c"><img src="assets/opt/cater-bites.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Закуски в сервировочных ложках"></figure>
+        <figure class="cat-d"><picture><source type="image/webp" srcset="assets/opt/banquet-640.webp 640w, assets/opt/banquet-1024.webp 1024w"><img src="assets/opt/banquet-1024.jpg" width="1024" height="683" loading="lazy" decoding="async" alt="Банкетная рассадка в зале лофта"></picture></figure>
+      </div>
+      <aside class="cat-card rv">
+        <h3 class="h3">Кейтеринг под ваш формат — от фуршета до банкета</h3>
+        <p class="lead">Не ищите поставщика отдельно — организуем питание под ключ. Горячее, закуски, напитки, посуда и сервировка под бюджет и формат.</p>
+        <ul>
+          <li>фуршет для корпоратива</li>
+          <li>кофе-брейк для обучения</li>
+          <li>банкетное меню для свадьбы</li>
+          <li>лёгкие сеты для съёмок и встреч</li>
+        </ul>
+        <a class="btn btn-p" href="#contact">Подобрать меню</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ ПРОСТРАНСТВО ═══════════ -->
 <section id="space">
   <div class="wrap">
+    <div class="space-head">
     <div class="sh rv">
       <span class="lbl">Пространство</span>
       <h2 class="h2">Как зал выглядит на самом деле</h2>
       <p class="lead">Кирпич начала века, арочные окна в полтора этажа, бетонный пол и чёрные балки. К съёмке ничего не достраивали.</p>
     </div>
-
-    <div class="gal rv">
-      <figure class="wide tall"><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-02-640.webp 640w, assets/opt/ev-02-1024.webp 1024w, assets/opt/ev-02-1600.webp 1600w"><img src="assets/opt/ev-02-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Зал лофта днём: дневной свет из арочных окон, кирпич и гирлянды"></picture><figcaption>Зал днём · 175 м²</figcaption></figure>
+    <div class="gal-tools">
+      <button type="button" class="gal-btn gal-prev" aria-label="Предыдущие фото" onclick="galGo(-1)">‹</button>
+      <button type="button" class="gal-btn gal-next" aria-label="Следующие фото" onclick="galGo(1)">›</button>
+    </div>
+    </div>
+    <script>
+      function galGo(dir){
+        var track = document.querySelector('.gal');
+        if (!track) return;
+        var card = track.querySelector('figure');
+        var gap = parseFloat(getComputedStyle(track).gap) || 14;
+        var step = (card ? card.getBoundingClientRect().width : 400) + gap;
+        track.scrollLeft += step * dir;
+      }
+    </script>
+    <div class="gal rv" tabindex="0" aria-label="Фотографии площадки, листайте вбок">
+      <figure><picture><source type="image/webp" sizes="(max-width:900px) 85vw, 420px" srcset="assets/opt/ev-02-640.webp 640w, assets/opt/ev-02-1024.webp 1024w, assets/opt/ev-02-1600.webp 1600w"><img src="assets/opt/ev-02-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Зал лофта днём: дневной свет из арочных окон, кирпич и гирлянды"></picture><figcaption>Зал днём · 175 м²</figcaption></figure>
       <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/loft-02-640.webp 640w, assets/opt/loft-02-1024.webp 1024w, assets/opt/loft-02-1600.webp 1600w"><img src="assets/opt/loft-02-1024.jpg" width="1500" height="1000" loading="lazy" decoding="async" alt="Зона отдыха у окон: кожаные диваны и белая циклорамная стена"></picture><figcaption>Зона отдыха</figcaption></figure>
       <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/ev-01-640.webp 640w, assets/opt/ev-01-1024.webp 1024w, assets/opt/ev-01-1600.webp 1600w"><img src="assets/opt/ev-01-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Гримерная лофта: шесть мест с зеркалами и подсветкой"></picture><figcaption>Гримерная · 6 мест</figcaption></figure>
       <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/loft-01-640.webp 640w, assets/opt/loft-01-1024.webp 1024w, assets/opt/loft-01-1600.webp 1600w"><img src="assets/opt/loft-01-1024.jpg" width="1500" height="1000" loading="lazy" decoding="async" alt="Арочный проход между зонами лофта"></picture><figcaption>Арочный проход</figcaption></figure>
@@ -506,6 +552,7 @@
       <div>
         <h4>Разделы</h4>
         <a href="#formats">Форматы</a><a href="#price">Цены</a>
+        <a href="#catering">Кейтеринг</a>
         <a href="#space">Пространство</a><a href="#faq">Вопросы</a>
       </div>
       <div>
@@ -599,6 +646,6 @@
   <a href="tel:+79853624558">Звонок</a>
 </div>
 
-<script src="assets/js/site.js?v=20260816" defer></script>
+<script src="assets/js/site.js?v=20260826-3" defer></script>
 </body>
 </html>
