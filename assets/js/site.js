@@ -2,9 +2,13 @@
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* плотная шапка после прокрутки */
+/* плотная шапка после прокрутки + стрелка наверх */
 const hdr = document.getElementById('hdr');
-const onScroll = () => hdr.classList.toggle('stuck', scrollY > 30);
+const toTop = document.getElementById('to-top');
+const onScroll = () => {
+  hdr.classList.toggle('stuck', scrollY > 30);
+  toTop?.classList.toggle('show', scrollY > 280);
+};
 onScroll(); addEventListener('scroll', onScroll, {passive:true});
 
 /* доступная мобильная навигация */

@@ -81,34 +81,29 @@ a{color:inherit;text-decoration:none}
 .btn-gh:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
 .btn-sm{padding:11px 22px;font-size:.88rem}
 
-/* ───────── шапка ───────── */
+/* ───────── шапка: кость + фирменная плитка, не фото героя ───────── */
 header{
   position:fixed;top:0;left:0;right:0;z-index:90;
   padding:calc(16px + env(safe-area-inset-top,0px)) var(--pad) 16px;display:flex;align-items:center;justify-content:space-between;gap:24px;
-  transition:background .4s var(--ease),backdrop-filter .4s,-webkit-backdrop-filter .4s,box-shadow .4s,padding .4s var(--ease);
+  background:var(--bone-l);
+  transition:box-shadow .4s,padding .4s var(--ease);
 }
-header.stuck{background:rgba(242,239,236,.82);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
-  box-shadow:0 1px 0 var(--ink-12);padding-block:calc(11px + env(safe-area-inset-top,0px)) 11px}
+header::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14;
+  background-image:url("/assets/brand/tile-slate.png?v=20260807");
+  background-size:150px 150px;background-repeat:repeat;
+}
+header>*{position:relative;z-index:1}
+header.stuck{box-shadow:0 1px 0 var(--ink-12);padding-block:calc(11px + env(safe-area-inset-top,0px)) 11px}
 .logo{display:grid;align-items:center;position:relative;flex-shrink:0}
-.logo img{grid-area:1/1;height:26px;width:auto;max-width:none;transition:height .4s var(--ease),opacity .3s}
+.logo img{grid-area:1/1;height:26px;width:auto;max-width:none;transition:height .4s var(--ease)}
 header.stuck .logo img{height:23px}
 .logo-light{opacity:0;pointer-events:none}
-header:not(.stuck) .logo-dark{opacity:0}
-header:not(.stuck) .logo-light{opacity:1}
 nav{display:flex;gap:4px;align-items:center}
 nav a{font-size:.92rem;color:var(--ink-60);padding:8px 14px;border-radius:100px;transition:.25s}
 nav a:hover{color:var(--ink);background:rgba(0,8,13,.05)}
-header:not(.stuck) nav a{color:rgba(255,255,255,.86)}
-header:not(.stuck) nav a:hover{color:#fff;background:rgba(255,255,255,.12)}
 .hd-r{display:flex;align-items:center;gap:12px}
 .hd-tel{font-size:.95rem;font-weight:500;white-space:nowrap}
-header:not(.stuck) .hd-tel{color:#fff}
-header:not(.stuck) .btn-p{background:#fff;color:var(--slate)}
-header:not(.stuck) .btn-p:hover{background:var(--bone-l);color:var(--slate-d)}
-header:not(.stuck) .nav-toggle span{background:#fff}
-header:not(.stuck) nav.open a{color:var(--ink)}
-header:not(.stuck) nav.open a:hover{color:var(--ink);background:rgba(0,8,13,.05)}
-body.nav-open header:not(.stuck) .nav-toggle span{background:var(--ink)}
 
 /* ───────── появление при скролле ─────────
    Прячем только если скрипт действительно работает (класс js ставится в <head>).
@@ -277,14 +272,11 @@ section{padding-block:clamp(64px,8vw,120px)}
 .cat-head{text-align:center;margin:0 auto clamp(28px,4vw,44px)}
 .cat-head .lbl{display:block}
 .cat-head .h2{margin:12px auto 0}
-.cat{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,.7fr);gap:18px;align-items:stretch}
-.cat-collage{display:grid;grid-template-columns:1.15fr .9fr .72fr;grid-template-rows:1fr 1fr;gap:12px;min-height:min(520px,62vw)}
-.cat-collage figure{margin:0;overflow:hidden;border-radius:var(--r);background:var(--grey);min-height:0}
-.cat-a{grid-column:1;grid-row:1/-1}
-.cat-b{grid-column:2;grid-row:1/-1}
-.cat-c{grid-column:3;grid-row:1}
-.cat-d{grid-column:3;grid-row:2}
-.cat-collage img{width:100%;height:100%;object-fit:cover;display:block}
+.cat{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.75fr);gap:18px;align-items:stretch}
+.cat-collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;min-height:0}
+.cat-collage figure{margin:0;overflow:hidden;border-radius:var(--r);background:var(--grey);min-height:0;position:relative;aspect-ratio:3/4}
+.cat-a,.cat-b,.cat-c,.cat-d{grid-column:auto;grid-row:auto}
+.cat-collage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block}
 .cat-card{background:var(--white);border:1px solid var(--ink-12);border-radius:var(--r);padding:clamp(22px,3vw,34px);
   display:flex;flex-direction:column}
 .cat-card .h3{margin-bottom:14px}
@@ -444,13 +436,19 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
 .ck p a{color:var(--slate);border-bottom:1px solid rgba(63,90,115,.35)}
 .ck-b{display:flex;gap:9px;flex-wrap:wrap}
 
-/* ───────── мобильная панель ───────── */
-.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:95;display:none;gap:8px;
-  padding:8px;background:rgba(242,239,236,.9);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
-  border:1px solid var(--ink-12);border-radius:100px;box-shadow:0 10px 34px -12px rgba(0,8,13,.3)}
-.dock a{flex:1;text-align:center;padding:13px 8px;border-radius:100px;font-size:.9rem;font-weight:500}
-.dock a.p{background:var(--slate);color:#fff}
-.dock a.w{background:#229ED9;color:#fff}
+/* ───────── стрелка наверх вместо нижней плашки ───────── */
+.to-top{
+  position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:95;
+  width:48px;height:48px;border:0;border-radius:50%;padding:0;
+  display:none;place-items:center;
+  background:var(--slate);color:#fff;cursor:pointer;
+  box-shadow:0 10px 24px -10px rgba(0,8,13,.45);
+  opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity .35s var(--ease),transform .35s var(--ease),background .25s;
+}
+.to-top svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
+.to-top.show:hover{background:var(--slate-d);transform:translateY(-2px)}
 
 @media (max-width:980px){
   .ct,.feat,.cat{grid-template-columns:1fr}
@@ -458,21 +456,21 @@ footer{background:var(--bone);border-top:1px solid var(--ink-12);padding-block:5
   .bn-wide{grid-column:span 1}
   nav{display:none}
   .gal figure{flex-basis:min(82vw,380px)}
-  .cat-collage{min-height:420px}
   .hero .h1{font-size:clamp(2.2rem,8.4vw,3.6rem)}
+  .hero-media img{object-position:18% 38%}
 }
 @media (max-width:640px){
   body{font-size:16px}
   .hd-tel{display:none}
-  .dock{display:flex}
-  footer{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+  .to-top{display:grid}
+  footer{padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
   .fg{grid-template-columns:1fr;gap:24px}
   section{padding-block:56px}
-  .cat-collage{grid-template-columns:1fr 1fr;grid-template-rows:minmax(180px,34vw) minmax(140px,26vw);min-height:0}
+  .cat-collage{grid-template-columns:1fr 1fr;grid-template-rows:none;min-height:0}
   .cat-a,.cat-b,.cat-c,.cat-d{grid-column:auto;grid-row:auto}
+  .cat-collage figure{aspect-ratio:3/4}
   .gal-tools{margin-bottom:0}
-  /* поднимаем над липкой панелью, чтобы не перекрывали друг друга */
-  .ck{left:12px;right:12px;bottom:calc(78px + env(safe-area-inset-bottom,0px));max-width:none;padding:18px 20px}
+  .ck{left:12px;right:12px;bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:none;padding:18px 20px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -548,20 +546,28 @@ nav a{min-height:44px;display:flex;align-items:center}
 
 @media (max-width:980px){
   .nav-toggle{display:block}
-  header nav.open{display:flex;position:fixed;inset:calc(72px + env(safe-area-inset-top,0px)) 0 0;z-index:85;flex-direction:column;align-items:stretch;
-    padding:28px var(--pad);gap:0;background:var(--bone-l);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
-  header nav.open a{font-size:1.5rem;border-bottom:1px solid var(--ink-12);border-radius:0;padding:15px 4px;min-height:58px;color:var(--ink)}
+  header nav.open{
+    display:flex;position:absolute;top:100%;left:0;right:0;z-index:2;
+    flex-direction:column;align-items:stretch;gap:0;
+    height:calc(100dvh - 100%);min-height:calc(100vh - 100%);
+    padding:8px var(--pad) 32px;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    background:var(--bone-l);
+  }
+  header nav.open::before{
+    content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14;
+    background-image:url("/assets/brand/tile-slate.png?v=20260807");
+    background-size:150px 150px;background-repeat:repeat;
+  }
+  header nav.open a{position:relative;z-index:1;font-size:1.5rem;border-bottom:1px solid var(--ink-12);border-radius:0;padding:15px 4px;min-height:58px;color:var(--ink)}
+  header nav.open a:hover{color:var(--ink);background:rgba(0,8,13,.05)}
   body.nav-open{overflow:hidden}
-  body.nav-open header{background:rgba(242,239,236,.96);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
-  body.nav-open header:not(.stuck) .logo-dark{opacity:1}
-  body.nav-open header:not(.stuck) .logo-light{opacity:0}
 }
 
 @media (max-width:640px){
   header{padding:calc(10px + env(safe-area-inset-top,0px)) var(--pad) 10px}
   header.stuck{padding-block:calc(8px + env(safe-area-inset-top,0px)) 8px}
   .hd-r>.btn{display:none}
-  .hero-in{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px));padding-top:calc(88px + env(safe-area-inset-top,0px))}
+  .hero-in{padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));padding-top:calc(88px + env(safe-area-inset-top,0px))}
   .hero-sub,.hero .lead{margin-block:12px 16px}
   .hero-act .btn{min-height:48px}
   .hero .h1{font-size:clamp(2rem,9vw,2.4rem)}
