@@ -4,14 +4,13 @@
    ═══════════════════════════════════════════════════════════ */
 :root{
   --slate:#3F5A73;
-  --slate-d:#32485c;
-  --slate-l:#5b7590;
   --bone:#E6E2DF;
-  --bone-l:#f2efec;
   --taupe:#806F60;
   --grey:#CCC5BF;
-  --white:#fff;
+  --white:#FFFFFF;
   --ink:#00080D;
+  --slate-d:color-mix(in srgb,var(--slate) 78%,var(--ink));
+  --bone-l:color-mix(in srgb,var(--bone) 55%,var(--white));
   --ink-60:rgba(0,8,13,.60);
   --ink-40:rgba(0,8,13,.40);
   --ink-12:rgba(0,8,13,.12);
@@ -46,7 +45,7 @@ a{color:inherit;text-decoration:none}
      непредсказуемо ведёт себя в Safari и там паттерн пропадал целиком.
      Верхний слой растворяет плитку в цвете страницы к низу блока. */
   background-image:
-    linear-gradient(180deg,rgba(242,239,236,0) 0%,rgba(242,239,236,.75) 62%,rgba(242,239,236,1) 88%),
+    linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--bone-l) 75%,transparent) 62%,var(--bone-l) 88%),
     url("/assets/brand/tile-slate.png?v=20260807");
   background-size:100% 100%,150px 150px;
   background-repeat:no-repeat,repeat;
@@ -59,27 +58,27 @@ a{color:inherit;text-decoration:none}
 .lbl{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--taupe)}
 .lead{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--ink-60);font-weight:300}
 
-.todo{color:#b4471f;border:1px dashed #b4471f;padding:0 .35em;border-radius:4px;
+.todo{color:var(--taupe);border:1px dashed var(--taupe);padding:0 .35em;border-radius:4px;
   font-size:.85em;white-space:nowrap;font-weight:500}
 
 /* ───────── кнопки ───────── */
 .btn{
   position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;
   font-family:var(--font);font-size:.95rem;font-weight:500;letter-spacing:.01em;
-  padding:15px 30px;border-radius:100px;border:1px solid transparent;cursor:pointer;
+  padding:16px 32px;border-radius:100px;border:1px solid transparent;cursor:pointer;
   transition:transform .45s var(--ease),background .3s,color .3s,border-color .3s,box-shadow .45s var(--ease);
   white-space:nowrap;overflow:hidden;
 }
 .btn:hover{transform:translateY(-2px)}
-.btn-p{background:var(--slate);color:#fff;box-shadow:0 1px 2px rgba(0,8,13,.14)}
+.btn-p{background:var(--slate);color:var(--white);box-shadow:0 1px 2px rgba(0,8,13,.14)}
 .btn-p:hover{background:var(--slate-d);box-shadow:0 14px 30px -10px rgba(63,90,115,.55)}
 .btn-o{border-color:var(--ink-12);color:var(--ink);background:transparent}
 .btn-o:hover{border-color:var(--slate);color:var(--slate);background:rgba(63,90,115,.05)}
-.btn-tg{background:#229ED9;color:#fff}
+.btn-tg{background:#229ED9;color:var(--white)}
 .btn-tg:hover{background:#1b8cc0;box-shadow:0 14px 30px -10px rgba(34,158,217,.6)}
-.btn-gh{border-color:rgba(255,255,255,.28);color:#fff}
+.btn-gh{border-color:rgba(255,255,255,.28);color:var(--white)}
 .btn-gh:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
-.btn-sm{padding:11px 22px;font-size:.88rem}
+.btn-sm{padding:12px 24px;font-size:.88rem}
 
 /* ───────── шапка: поверх фото, при скролле — кость ───────── */
 header{
@@ -100,13 +99,13 @@ nav{display:flex;gap:4px;align-items:center}
 nav a{font-size:.92rem;color:var(--ink-60);padding:8px 14px;border-radius:100px;transition:.25s}
 nav a:hover{color:var(--ink);background:rgba(0,8,13,.05)}
 header:not(.stuck) nav a{color:rgba(255,255,255,.86)}
-header:not(.stuck) nav a:hover{color:#fff;background:rgba(255,255,255,.12)}
+header:not(.stuck) nav a:hover{color:var(--white);background:rgba(255,255,255,.12)}
 .hd-r{display:flex;align-items:center;gap:12px}
-.hd-tel{font-size:.95rem;font-weight:500;white-space:nowrap}
-header:not(.stuck) .hd-tel{color:#fff}
-header:not(.stuck) .btn-p{background:#fff;color:var(--slate)}
+.hd-tel{display:flex;align-items:center;font-size:.95rem;font-weight:500;white-space:nowrap;line-height:1;min-height:44px}
+header:not(.stuck) .hd-tel{color:var(--white)}
+header:not(.stuck) .btn-p{background:var(--white);color:var(--slate)}
 header:not(.stuck) .btn-p:hover{background:var(--bone-l);color:var(--slate-d)}
-header:not(.stuck) .nav-toggle span{background:#fff}
+header:not(.stuck) .nav-toggle span{background:var(--white)}
 
 /* ───────── появление при скролле ─────────
    Прячем только если скрипт действительно работает (класс js ставится в <head>).
@@ -125,7 +124,7 @@ header:not(.stuck) .nav-toggle span{background:#fff}
 .hero-media{
   position:relative;width:100%;margin:0;
   height:clamp(320px,56vw,720px);
-  overflow:hidden;background:#1a1c1e;
+  overflow:hidden;background:var(--ink);
 }
 .hero-media img{width:100%;height:110%;object-fit:cover;object-position:center 48%;will-change:transform}
 .hero-media::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -139,11 +138,11 @@ header:not(.stuck) .nav-toggle span{background:#fff}
 .hero-in{
   position:relative;z-index:2;width:100%;
   display:flex;flex-direction:column;
-  padding-top:clamp(8px,1.5vw,16px);
+  padding-top:clamp(28px,4vw,48px);
   padding-bottom:clamp(28px,4vw,48px);
 }
-.hero .lbl{display:inline-flex;align-items:center;gap:11px;margin-bottom:14px;color:var(--taupe);max-width:100%;flex-wrap:wrap}
-.hero .lbl::before{content:'';width:30px;height:1px;background:var(--taupe)}
+.hero .lbl{display:inline-flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--taupe);max-width:100%;flex-wrap:wrap}
+.hero .lbl::before{content:'';width:32px;height:1px;background:var(--taupe)}
 .h1 .ln{display:block;overflow:hidden}
 .h1 .ln>span{display:block;transform:translateY(105%);
   animation:up 1.05s var(--ease) forwards}
@@ -161,7 +160,7 @@ header:not(.stuck) .nav-toggle span{background:#fff}
 
 .hero .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(20px,3vw,32px)}
 .hero .stat{background:var(--white);border:1px solid var(--ink-12);
-  border-radius:16px;padding:18px 20px;
+  border-radius:var(--r);padding:18px 20px;
   transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .hero .stat:hover{transform:translateY(-4px);box-shadow:0 20px 44px -26px rgba(0,8,13,.3)}
 .hero .stat b{display:block;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:500;line-height:1;
@@ -180,7 +179,7 @@ header:not(.stuck) .nav-toggle span{background:#fff}
 /* ───────── секции ───────── */
 section{padding-block:clamp(64px,8vw,120px)}
 .sh{max-width:62ch;margin-bottom:clamp(34px,4.5vw,56px)}
-.sh .lbl{display:block;margin-bottom:15px}
+.sh .lbl{display:block;margin-bottom:16px}
 .sh .h2{margin-bottom:16px}
 
 /* ───────── форматы ───────── */
@@ -195,7 +194,7 @@ section{padding-block:clamp(64px,8vw,120px)}
 /* затемнение под подпись: без него текст тонет в фото */
 .fmt-c::after{content:'';position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(0,8,13,0) 16%,rgba(0,8,13,.42) 46%,rgba(0,8,13,.9) 100%)}
-.fmt-c>*{position:relative;z-index:2;color:#fff}
+.fmt-c>*{position:relative;z-index:2;color:var(--white)}
 .fmt-c .h3{margin-bottom:7px;text-shadow:0 1px 12px rgba(0,8,13,.5)}
 .fmt-c p{font-size:.92rem;color:rgba(255,255,255,.9);font-weight:300}
 .fmt-cap{margin-top:15px;padding-top:13px;border-top:1px solid rgba(255,255,255,.3);
@@ -203,19 +202,19 @@ section{padding-block:clamp(64px,8vw,120px)}
 
 /* ───────── бенто «что входит» ───────── */
 .bento{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:14px}
-.bn{background:var(--white);border:1px solid var(--ink-12);border-radius:18px;padding:26px;
+.bn{background:var(--white);border:1px solid var(--ink-12);border-radius:var(--r);padding:26px;
   transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .3s}
 .bn:hover{transform:translateY(-4px);border-color:var(--slate);
   box-shadow:0 20px 44px -26px rgba(0,8,13,.3)}
-.bn i{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;
-  background:rgba(63,90,115,.09);color:var(--slate);margin-bottom:16px;font-style:normal;
+.bn i{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;
+  background:color-mix(in srgb,var(--slate) 9%,transparent);color:var(--slate);margin-bottom:16px;font-style:normal;
   transition:background .35s var(--ease),color .35s var(--ease)}
-.bn:hover i{background:var(--slate);color:#fff}
+.bn:hover i{background:var(--slate);color:var(--white)}
 .bn i svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;
   stroke-linecap:round;stroke-linejoin:round}
 .bn b{display:block;font-size:1.06rem;font-weight:500;margin-bottom:5px}
 .bn span{font-size:.9rem;color:var(--ink-60);font-weight:300;line-height:1.5}
-.bn-wide{grid-column:span 2;background:var(--slate);border-color:var(--slate);color:#fff;
+.bn-wide{grid-column:span 2;background:var(--slate);border-color:var(--slate);color:var(--white);
   display:flex;flex-direction:column;justify-content:center}
 .bn-wide:hover{box-shadow:0 24px 50px -24px rgba(63,90,115,.7)}
 .bn-wide .h3{margin-bottom:11px}
@@ -223,13 +222,13 @@ section{padding-block:clamp(64px,8vw,120px)}
 
 /* ───────── цены ───────── */
 .pr{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:26px}
-.pr-c{background:var(--white);border:1px solid var(--ink-12);border-radius:22px;padding:32px;
+.pr-c{background:var(--white);border:1px solid var(--ink-12);border-radius:var(--r);padding:32px;
   display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .pr-c:hover{transform:translateY(-5px);box-shadow:0 26px 54px -28px rgba(0,8,13,.32)}
-.pr-c.hl{background:var(--slate);border-color:var(--slate);color:#fff}
+.pr-c.hl{background:var(--slate);border-color:var(--slate);color:var(--white)}
 .pr-tag{align-self:flex-start;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
-  padding:5px 13px;border-radius:100px;background:rgba(63,90,115,.1);color:var(--slate);margin-bottom:17px}
-.pr-c.hl .pr-tag{background:rgba(255,255,255,.18);color:#fff}
+  padding:5px 13px;border-radius:100px;background:color-mix(in srgb,var(--slate) 10%,transparent);color:var(--slate);margin-bottom:16px}
+.pr-c.hl .pr-tag{background:rgba(255,255,255,.18);color:var(--white)}
 .pr-c .h3{margin-bottom:5px}
 .pr-when{font-size:.86rem;color:var(--ink-40);margin-bottom:22px}
 .pr-c.hl .pr-when{color:rgba(255,255,255,.6)}
@@ -257,7 +256,7 @@ section{padding-block:clamp(64px,8vw,120px)}
   background:var(--white);color:var(--ink);font-size:1.35rem;line-height:1;cursor:pointer;
   transition:border-color .25s,background .25s,transform .25s var(--ease)
 }
-.gal-btn:hover{border-color:var(--slate);background:var(--slate);color:#fff}
+.gal-btn:hover{border-color:var(--slate);background:var(--slate);color:var(--white)}
 .gal-btn:active{transform:scale(.96)}
 .gal{
   display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
@@ -270,7 +269,7 @@ section{padding-block:clamp(64px,8vw,120px)}
 }
 .gal img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
 .gal figure:hover img{transform:scale(1.06)}
-.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:15px 17px;color:#fff;
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;color:var(--white);
   font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
   background:linear-gradient(transparent,rgba(0,8,13,.8))}
 
@@ -302,13 +301,13 @@ section{padding-block:clamp(64px,8vw,120px)}
 
 /* ───────── отзывы ───────── */
 .rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px}
-.rev article{background:var(--white);border:1px solid var(--ink-12);border-radius:18px;padding:28px;
+.rev article{background:var(--white);border:1px solid var(--ink-12);border-radius:var(--r);padding:28px;
   display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .rev article:hover{transform:translateY(-4px);box-shadow:0 20px 44px -26px rgba(0,8,13,.3)}
 .rev .st{color:var(--taupe);letter-spacing:.16em;font-size:.9rem;margin-bottom:15px}
 .rev blockquote{font-size:1rem;line-height:1.55;flex:1;margin-bottom:18px;font-weight:300}
 .rev cite{font-style:normal;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-40)}
-.rev a{font-size:.84rem;color:var(--slate);margin-top:9px;border-bottom:1px solid rgba(63,90,115,.3)}
+.rev a{font-size:.84rem;color:var(--slate);margin-top:8px;border-bottom:1px solid color-mix(in srgb,var(--slate) 30%,transparent)}
 
 /* ───────── FAQ ───────── */
 .faq{border-top:1px solid var(--ink-12)}
@@ -327,7 +326,7 @@ section{padding-block:clamp(64px,8vw,120px)}
 @keyframes slide{from{opacity:0;transform:translateY(-8px)}}
 
 /* ───────── призыв + контакты ───────── */
-.cta{background:var(--slate);color:#fff;position:relative;overflow:hidden;text-align:center}
+.cta{background:var(--slate);color:var(--white);position:relative;overflow:hidden;text-align:center}
 .cta::before{content:'';position:absolute;inset:0;opacity:.13;
   background-image:url("/assets/brand/tile-bone.png?v=20260807");background-size:150px 150px}
 .cta>*{position:relative;z-index:2}
@@ -341,17 +340,17 @@ section{padding-block:clamp(64px,8vw,120px)}
 .form .lbl{color:var(--ink-40)}
 .form input,.form textarea{
   font-family:var(--font);font-size:1rem;color:var(--ink);background:var(--white);
-  border:1px solid var(--ink-12);border-radius:12px;padding:15px 17px;width:100%;
+  border:1px solid var(--ink-12);border-radius:var(--r);padding:16px 18px;width:100%;
   transition:border-color .25s,box-shadow .25s}
 .form input:focus,.form textarea:focus{outline:none;border-color:var(--slate);
-  box-shadow:0 0 0 4px rgba(63,90,115,.12)}
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--slate) 12%,transparent)}
 .cons{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--ink-40);line-height:1.45}
 .cons input{width:auto;margin-top:3px;flex:none}
 .cons a{border-bottom:1px solid var(--ink-12)}
 .info>div{border-top:1px solid var(--ink-12);padding:17px 0}
 .info .lbl{display:block;margin-bottom:6px}
 .info p,.info a{font-size:1.05rem}
-.map{border-radius:18px;overflow:hidden;margin-top:22px;border:1px solid var(--ink-12);
+.map{border-radius:var(--r);overflow:hidden;margin-top:24px;border:1px solid var(--ink-12);
   filter:grayscale(1) contrast(1.03);transition:filter .5s}
 .map:hover{filter:none}
 .map iframe{width:100%;height:280px;border:0;display:block}
@@ -378,7 +377,7 @@ footer .wrap{position:relative;z-index:1}
   opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s}
 .md.open{opacity:1;visibility:visible}
 .md-w{width:min(940px,100%);max-height:92vh;display:flex;flex-direction:column;
-  background:var(--bone-l);border-radius:22px;overflow:hidden;
+  background:var(--bone-l);border-radius:var(--r);overflow:hidden;
   box-shadow:0 40px 90px -30px rgba(0,8,13,.5);
   transform:translateY(22px) scale(.985);transition:transform .5s var(--ease)}
 .md.open .md-w{transform:none}
@@ -393,7 +392,7 @@ footer .wrap{position:relative;z-index:1}
   transition:.25s}
 .md-x:hover{border-color:var(--slate);color:var(--slate);transform:rotate(90deg)}
 .md-b{flex:1;min-height:0;overflow:auto;padding:18px 26px 26px;-webkit-overflow-scrolling:touch}
-.cal-fr{border:1px solid var(--ink-12);border-radius:16px;overflow:hidden;background:var(--white)}
+.cal-fr{border:1px solid var(--ink-12);border-radius:var(--r);overflow:hidden;background:var(--white)}
 .cal-fr iframe{width:100%;height:min(560px,58vh);border:0;display:block}
 .md-f{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
   padding:16px 26px;border-top:1px solid var(--ink-12);background:var(--bone)}
@@ -412,21 +411,21 @@ footer .wrap{position:relative;z-index:1}
   transition:opacity .35s var(--ease),visibility .35s}
 .lb.open{opacity:1;visibility:visible}
 .lb-s{position:relative;display:grid;place-items:center;padding:56px 76px 12px;min-height:0}
-.lb-s img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;
-  box-shadow:0 30px 70px -30px rgba(0,0,0,.8);
+.lb-s img{max-width:100%;max-height:100%;object-fit:contain;border-radius:var(--r);
+  box-shadow:0 30px 70px -30px rgba(0,8,13,.8);
   transform:scale(.97);opacity:0;transition:transform .45s var(--ease),opacity .35s}
 .lb.open .lb-s img{transform:none;opacity:1}
-.lb-cap{padding:14px 24px 26px;text-align:center;color:rgba(246,243,239,.72);
+.lb-cap{padding:14px 24px 26px;text-align:center;color:color-mix(in srgb,var(--bone) 72%,transparent);
   font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
-.lb-cap b{color:#fff;font-weight:500}
+.lb-cap b{color:var(--white);font-weight:500}
 .lb-btn{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;
   border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);
-  color:#fff;cursor:pointer;display:grid;place-items:center;font-size:1.5rem;line-height:1;
+  color:var(--white);cursor:pointer;display:grid;place-items:center;font-size:1.5rem;line-height:1;
   font-family:var(--font);backdrop-filter:blur(8px);transition:.25s}
 .lb-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.5)}
 .lb-prev{left:16px}.lb-next{right:16px}
 .lb-x{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:var(--white);
   cursor:pointer;font-size:1.5rem;line-height:1;font-family:var(--font);
   backdrop-filter:blur(8px);transition:.25s;z-index:2}
 .lb-x:hover{background:rgba(255,255,255,.18);transform:rotate(90deg)}
@@ -440,13 +439,13 @@ footer .wrap{position:relative;z-index:1}
 .ck{
   position:fixed;right:16px;left:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:100;
   max-width:min(430px, calc(100vw - 32px));
-  background:var(--white);border:1px solid var(--ink-12);border-radius:18px;
+  background:var(--white);border:1px solid var(--ink-12);border-radius:var(--r);
   padding:22px 24px;box-shadow:0 22px 50px -18px rgba(0,8,13,.32);
   transform:translateY(140%);transition:transform .7s var(--ease);
 }
 .ck.show{transform:none}
 .ck p{font-size:.9rem;color:var(--ink-60);font-weight:300;margin-bottom:16px;line-height:1.5}
-.ck p a{color:var(--slate);border-bottom:1px solid rgba(63,90,115,.35)}
+.ck p a{color:var(--slate);border-bottom:1px solid color-mix(in srgb,var(--slate) 35%,transparent)}
 .ck-b{display:flex;gap:9px;flex-wrap:wrap}
 
 /* ───────── стрелка наверх вместо нижней плашки ───────── */
@@ -454,7 +453,7 @@ footer .wrap{position:relative;z-index:1}
   position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:95;
   width:48px;height:48px;border:0;border-radius:50%;padding:0;
   display:none;place-items:center;
-  background:var(--slate);color:#fff;cursor:pointer;
+  background:var(--slate);color:var(--white);cursor:pointer;
   box-shadow:0 10px 24px -10px rgba(0,8,13,.45);
   opacity:0;pointer-events:none;transform:translateY(10px);
   transition:opacity .35s var(--ease),transform .35s var(--ease),background .25s;
@@ -501,16 +500,16 @@ body:has(.ck.show) .to-top{opacity:0;pointer-events:none}
 .bank dd{font-variant-numeric:tabular-nums;word-break:break-all}
 .req button{background:none;border:0;padding:0;font:inherit;cursor:pointer}
 
-.err{display:block;font-size:.78rem;color:#b4471f;min-height:1em;margin-top:4px}
-.form input[aria-invalid="true"]{border-color:#b4471f}
+.err{display:block;font-size:.78rem;color:var(--taupe);min-height:1em;margin-top:4px}
+.form input[aria-invalid="true"]{border-color:var(--taupe)}
 .sent{padding:20px;border:1px solid var(--slate);color:var(--slate);font-size:.96rem}
 .btn[disabled]{opacity:.45;pointer-events:none}
 
-.route{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.route{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 @media (max-width:560px){.route .btn{flex:1;min-width:140px}}
 
 .trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
-.fail{margin-top:12px;font-size:.88rem;color:#b4471f}
+.fail{margin-top:12px;font-size:.88rem;color:var(--taupe)}
 .fail a{text-decoration:underline;text-underline-offset:2px}
 
 /* Элемент picture — только контейнер для выбора формата, своей коробки у него быть
@@ -539,9 +538,8 @@ picture{display:contents}
 html{scroll-padding-top:72px}
 .logo{min-height:44px;display:grid;align-items:center;flex-shrink:0}
 nav a{min-height:44px;display:flex;align-items:center}
-.hd-tel{min-height:44px;align-items:center}
 .btn:focus-visible,a:focus-visible,button:focus-visible,.gal figure:focus-visible,.faq summary:focus-visible{
-  outline:3px solid rgba(63,90,115,.48);outline-offset:3px
+  outline:3px solid color-mix(in srgb,var(--slate) 48%,transparent);outline-offset:3px
 }
 .nav-toggle{display:none;width:48px;height:48px;border:0;background:transparent;padding:12px;cursor:pointer}
 .nav-toggle span{display:block;width:24px;height:1px;background:var(--ink);margin:7px auto;transition:transform .25s}
@@ -589,12 +587,12 @@ nav a{min-height:44px;display:flex;align-items:center}
   .hd-r>.btn{display:none}
   .hero-media{height:clamp(300px,68vw,460px)}
   .hero-media img{object-position:18% 48%}
-  .hero-in{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));padding-top:16px}
+  .hero-in{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));padding-top:24px}
   .hero-sub,.hero .lead{margin-block:10px 14px}
   .hero-act{align-items:stretch}
   .hero-act .btn{min-height:48px;white-space:normal;text-align:center}
   .hero-note{flex:1 1 100%}
-  .hero .lbl{letter-spacing:.12em;font-size:.68rem}
+  .hero .lbl{letter-spacing:.18em;font-size:.7rem}
   .hero .h1{font-size:clamp(1.85rem,8.4vw,2.25rem)}
   .hero .stats{gap:8px;margin-top:14px}
   .hero .stat{padding:12px 12px}

@@ -11,13 +11,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--slate:#3F5A73;--bone-l:#f2efec;--taupe:#806F60;--ink:#00080D;
-  --ink-60:rgba(0,8,13,.6);--ink-12:rgba(0,8,13,.12)}
+:root{--slate:#3F5A73;--bone:#E6E2DF;--white:#FFFFFF;--ink:#00080D;
+  --bone-l:color-mix(in srgb,var(--bone) 55%,var(--white));--taupe:#806F60;
+  --ink-60:rgba(0,8,13,.6);--ink-12:rgba(0,8,13,.12);
+  --slate-d:color-mix(in srgb,var(--slate) 78%,var(--ink))}
 *{box-sizing:border-box;margin:0;padding:0}
 body{min-height:100svh;display:grid;place-items:center;padding:24px;
   background:var(--bone-l);color:var(--ink);
   font-family:'Jost',-apple-system,BlinkMacSystemFont,sans-serif;
-  font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+  font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
 .box{max-width:520px;text-align:center}
 img{height:30px;width:auto;margin:0 auto 34px}
 .code{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
@@ -28,8 +30,8 @@ p{color:var(--ink-60);margin-bottom:30px}
 .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 a.btn{display:inline-flex;align-items:center;padding:14px 26px;border-radius:100px;
   font-size:.92rem;font-weight:500;text-decoration:none;transition:.25s}
-.p{background:var(--slate);color:#fff}
-.p:hover{background:#33495e}
+.p{background:var(--slate);color:var(--white)}
+.p:hover{background:var(--slate-d)}
 .o{border:1px solid var(--ink-12);color:var(--ink)}
 .o:hover{border-color:var(--slate);color:var(--slate)}
 </style>
