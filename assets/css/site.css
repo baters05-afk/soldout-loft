@@ -505,7 +505,7 @@ body:has(.ck.show) .to-top{opacity:0;pointer-events:none}
   nav{display:none}
   .gal figure{flex-basis:min(82vw,380px)}
   .hero .h1{font-size:clamp(2rem,7.2vw,3.2rem)}
-  .hero-media img{object-position:18% 48%}
+  .hero-media img{object-position:center 48%}
   .pr-c .btn,.cat-card .btn,.fmt-c .h3{white-space:normal}
 }
 @media (max-width:640px){
@@ -628,7 +628,7 @@ nav a{min-height:44px;display:flex;align-items:center}
   header.stuck{padding-block:calc(6px + env(safe-area-inset-top,0px)) 6px}
   .hd-r>.btn{display:none}
   .hero-media{height:clamp(300px,68vw,460px)}
-  .hero-media img{object-position:18% 48%}
+  .hero-media img{object-position:center 48%}
   .hero-in{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));padding-top:24px}
   .hero-sub,.hero .lead{margin-block:10px 14px}
   .hero-act{align-items:stretch}
