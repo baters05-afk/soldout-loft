@@ -413,11 +413,16 @@ footer .wrap{position:relative;z-index:1}
 .md-h .lbl{display:block;margin-bottom:8px}
 .md-h h3{font-size:clamp(1.3rem,2.4vw,1.75rem);font-weight:500;letter-spacing:-.02em;line-height:1.1}
 .md-h p{font-size:.9rem;color:var(--ink-60);font-weight:300;margin-top:8px;max-width:56ch}
-.md-x{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--ink-12);
-  background:var(--white);cursor:pointer;display:grid;place-items:center;
-  font-size:1.4rem;line-height:1;color:var(--ink-60);font-family:var(--font);
-  transition:.25s}
-.md-x:hover{border-color:var(--slate);color:var(--slate);transform:rotate(90deg)}
+.md-x{position:relative;flex:none;width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--ink-12);background:var(--white);cursor:pointer;
+  color:var(--ink-60);font-size:0;line-height:0;
+  transition:border-color .2s var(--ease),background-color .2s var(--ease),color .2s var(--ease)}
+.md-x::before,.md-x::after{content:"";position:absolute;left:50%;top:50%;
+  width:14px;height:1.5px;border-radius:2px;background:currentColor;
+  transform:translate(-50%,-50%) rotate(45deg)}
+.md-x::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.md-x:hover{border-color:var(--slate);background:var(--bone);color:var(--slate)}
+.md-x:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
 .md-b{flex:1;min-height:0;overflow:auto;padding:18px 26px 26px;-webkit-overflow-scrolling:touch}
 .cal-fr{border:1px solid var(--ink-12);border-radius:var(--r);overflow:hidden;background:var(--white)}
 .cal-fr iframe{width:100%;height:min(560px,58vh);border:0;display:block}
