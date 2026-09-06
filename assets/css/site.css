@@ -225,6 +225,9 @@ section{padding-block:clamp(64px,8vw,120px)}
   stroke-linecap:round;stroke-linejoin:round}
 .bn b{display:block;font-size:1.06rem;font-weight:500;margin-bottom:5px}
 .bn span{font-size:.9rem;color:var(--ink-60);font-weight:300;line-height:1.5}
+.bn-bar{display:flex;flex-direction:column}
+.bn-note{display:block;margin-top:auto;padding-top:14px;font-size:.68rem;line-height:1.35;
+  color:var(--ink-40);font-weight:300}
 .bn-wide{grid-column:span 2;background:var(--slate);border-color:var(--slate);color:var(--white);
   display:flex;flex-direction:column;justify-content:center}
 .bn-wide:hover{box-shadow:0 24px 50px -24px rgba(63,90,115,.7)}
