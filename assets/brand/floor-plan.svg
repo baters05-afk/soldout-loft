@@ -1,143 +1,221 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 984" role="img" aria-labelledby="plan-title plan-desc">
-  <title id="plan-title">План пространства SOLDOUT</title>
-  <desc id="plan-desc">План лофта общей площадью 172,4 квадратного метра. Основной зал 150 квадратных метров, дополнительное помещение 22,4 квадратного метра, два санузла и две металлические колонны.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 984" role="img" aria-labelledby="title desc">
+  <title id="title">План пространства SOLDOUT</title>
+  <desc id="desc">Векторный план пространства SOLDOUT общей площадью 172,4 квадратного метра. Показаны стены, проёмы, окна, колонны, санузлы, отопление и исходные размеры.</desc>
   <defs>
     <style>
-      .canvas{fill:#f1eeea}.wall{fill:#3f5a73}.wall-soft{fill:#d8e1e4}.room{fill:#fbfaf8}.service{fill:#e9eeed}
-      .line{fill:none;stroke:#13212a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-      .thin{fill:none;stroke:#3f5a73;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-      .measure{fill:none;stroke:#8c796b;stroke-width:1.4;stroke-dasharray:7 7}
-      .window{fill:#fbfaf8;stroke:#3f5a73;stroke-width:2}.heater{fill:#8c796b}.column{fill:#3f5a73;stroke:#13212a;stroke-width:2}
-      .title{font:500 31px Jost,Arial,sans-serif;letter-spacing:.04em;fill:#13212a}
-      .kicker{font:500 14px Jost,Arial,sans-serif;letter-spacing:.22em;fill:#8c796b}
-      .label{font:500 18px Jost,Arial,sans-serif;fill:#13212a}.area{font:400 16px Jost,Arial,sans-serif;fill:#3f5a73}
-      .dim{font:500 13px Jost,Arial,sans-serif;letter-spacing:.04em;fill:#8c796b}
-      .note{font:400 14px Jost,Arial,sans-serif;fill:#5e686d}.tiny{font:500 11px Jost,Arial,sans-serif;letter-spacing:.08em;fill:#5e686d}
+      .bg{fill:#f2efeb}.paper{fill:#fbfaf8}.wall{fill:#3f5a73}.part{fill:none;stroke:#253640;stroke-width:3}
+      .thin{fill:none;stroke:#3f5a73;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+      .window{fill:#fbfaf8;stroke:#3f5a73;stroke-width:1.8}.glass{stroke:#8da0aa;stroke-width:1}
+      .heat{fill:#8c796b}.heatline{fill:none;stroke:#8c796b;stroke-width:2}.sewer{fill:none;stroke:#253640;stroke-width:3}
+      .dimline{fill:none;stroke:#8c796b;stroke-width:1.15}.diag{fill:none;stroke:#3f5a73;stroke-width:1.15;opacity:.72}
+      .hatch{fill:#e8edec}.wet{fill:#edf1f0}.column{fill:#3f5a73;stroke:#17262f;stroke-width:1.5}
+      .head{font:500 30px Jost,Arial,sans-serif;letter-spacing:.04em;fill:#17262f}
+      .kicker{font:500 13px Jost,Arial,sans-serif;letter-spacing:.22em;fill:#806f60}
+      .label{font:500 16px Jost,Arial,sans-serif;fill:#17262f}.small{font:400 12px Jost,Arial,sans-serif;fill:#56646b}
+      .dim{font:500 11px Jost,Arial,sans-serif;fill:#806f60}.tiny{font:500 10px Jost,Arial,sans-serif;fill:#56646b}
     </style>
-    <marker id="arrow" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M0 0L8 4L0 8z" fill="#8c796b"/>
+    <marker id="arr" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0L8 4L0 8z" fill="#806f60"/>
     </marker>
-    <pattern id="tile" width="72" height="72" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <path d="M0 36H72M36 0V72" stroke="#3f5a73" stroke-width="1" opacity=".055"/>
+    <pattern id="brand" width="72" height="72" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M0 36H72M36 0V72" stroke="#3f5a73" stroke-width="1" opacity=".035"/>
     </pattern>
   </defs>
 
-  <rect class="canvas" width="1280" height="984"/>
-  <rect width="1280" height="984" fill="url(#tile)"/>
+  <rect class="bg" width="1280" height="984"/>
+  <rect width="1280" height="984" fill="url(#brand)"/>
+  <text class="kicker" x="32" y="25">ПЛАН ПРОСТРАНСТВА</text>
+  <text class="head" x="32" y="57">План SOLDOUT, общая площадь 172,4 м²</text>
+  <text class="small" x="1228" y="53" text-anchor="end">Все размеры указаны в миллиметрах</text>
 
-  <g transform="translate(0 6)">
-    <text class="kicker" x="64" y="48">ПЛАН ПРОСТРАНСТВА</text>
-    <text class="title" x="64" y="84">SOLDOUT, 172,4 м²</text>
-    <text class="note" x="1216" y="78" text-anchor="end">Все размеры указаны в миллиметрах</text>
-  </g>
+  <!-- Поля помещений -->
+  <path class="paper" d="M75 145H207V758H75Z"/>
+  <path class="paper" d="M253 145H1187V758H253Z"/>
+  <path class="wet" d="M1013 530H1187V758H1013Z"/>
 
-  <!-- помещения -->
-  <path class="room" d="M66 164H207V760H66Z"/>
-  <path class="room" d="M249 164H1190V760H249Z"/>
-  <path class="service" d="M881 164H1190V363H881Z"/>
-  <path class="service" d="M1017 526H1190V760H1017Z"/>
+  <!-- Наружные стены: координаты повторяют растр исходника -->
+  <rect class="wall" x="31" y="97" width="79" height="48"/>
+  <rect class="wall" x="31" y="145" width="44" height="613"/>
+  <rect class="wall" x="31" y="758" width="78" height="41"/>
+  <rect class="wall" x="199" y="98" width="174" height="47"/>
+  <rect class="wall" x="467" y="99" width="49" height="46"/>
+  <rect class="wall" x="597" y="99" width="47" height="46"/>
+  <rect class="wall" x="727" y="99" width="61" height="46"/>
+  <rect class="wall" x="870" y="99" width="59" height="46"/>
+  <rect class="wall" x="1010" y="99" width="62" height="46"/>
+  <rect class="wall" x="1155" y="99" width="63" height="46"/>
+  <rect class="wall" x="1187" y="145" width="40" height="229"/>
+  <rect class="wall" x="1187" y="431" width="41" height="368"/>
+  <rect class="wall" x="109" y="758" width="105" height="41"/>
+  <rect class="wall" x="214" y="758" width="112" height="41"/>
+  <rect class="wall" x="421" y="758" width="48" height="41"/>
+  <rect class="wall" x="565" y="758" width="46" height="41"/>
+  <rect class="wall" x="708" y="758" width="47" height="41"/>
+  <rect class="wall" x="850" y="758" width="45" height="41"/>
+  <rect class="wall" x="1003" y="758" width="69" height="41"/>
+  <rect class="wall" x="1072" y="758" width="96" height="41"/>
+  <rect class="wall" x="1168" y="758" width="60" height="41"/>
 
-  <!-- наружные стены, повторяют геометрию исходного плана -->
-  <path class="wall" d="M36 132H112V164H66V760H112V792H36Z"/>
-  <path class="wall" d="M112 132H207V164H112ZM207 132H376V164H249V389H217V164H207Z"/>
-  <path class="wall" d="M376 132H472V164H376ZM520 132H611V164H520ZM659 132H755V164H659ZM802 132H896V164H802ZM944 132H1040V164H944ZM1087 132H1218V792H1190V164H1087Z"/>
-  <path class="wall" d="M112 760H249V792H112ZM249 760H376V792H249ZM472 760H520V792H472ZM611 760H659V792H611ZM755 760H802V792H755ZM896 760H944V792H896ZM1040 760H1087V792H1040ZM1087 760H1218V792H1087Z"/>
+  <!-- Простенки между помещением 1 и залом -->
+  <path class="wall" d="M214 145H253L250 389H217Z"/>
+  <path class="wall" d="M217 517H253V758H214Z"/>
+  <!-- Между помещениями реальный открытый арочный проём, без дверных полотен -->
+  <path class="part" d="M207 145V758"/>
 
-  <!-- внутренние перегородки -->
-  <path class="line" d="M207 164V389M207 492V760M249 164V390M249 492V760"/>
-  <path class="line" d="M881 164V363H1190M881 363V456H1190"/>
-  <path class="thin" d="M1017 526H1190M1017 526V760M1103 526V657M1017 657H1190M1103 657V760"/>
+  <!-- Короткая вертикаль идёт только от верхней стены до границы зоны.
+       Ниже границы продолжения и второй горизонтали нет. -->
+  <path class="part" d="M890 145V364H1187"/>
 
-  <!-- окна сверху -->
-  <g>
-    <path class="window" d="M112 132V164H207V132M376 132V164H472V132M520 132V164H611V132M659 132V164H755V132M802 132V164H896V132M944 132V164H1040V132M1087 132V164H1168V132"/>
-    <path class="thin" d="M120 143H199M384 143H464M528 143H603M667 143H747M810 143H888M952 143H1032M1095 143H1160"/>
-  </g>
+  <!-- Левое дополнительное помещение -->
+  <path class="part" d="M75 540H108M169 540H207"/>
+  <path class="thin" d="M108 540V489A51 51 0 0 1 159 540"/>
+  <path class="thin" d="M108 540H159"/>
 
-  <!-- окна снизу -->
-  <g>
-    <path class="window" d="M112 760V792H207V760M249 760V792H376V760M472 760V792H611V760M659 760V792H755V760M802 760V792H896V760M944 760V792H1040V760"/>
-    <path class="thin" d="M120 781H199M257 781H368M480 781H603M667 781H747M810 781H888M952 781H1032"/>
-  </g>
+  <!-- Входные двери -->
+  <path class="thin" d="M110 98V70L157 98M199 98V70L157 98"/>
+  <path class="thin" d="M1187 374H1234V421M1187 431H1234"/>
+  <path class="thin" d="M1234 421A47 47 0 0 0 1187 374"/>
 
-  <!-- радиаторы -->
-  <g class="heater">
-    <rect x="116" y="174" width="83" height="10" rx="3"/><rect x="387" y="174" width="74" height="10" rx="3"/>
-    <rect x="532" y="174" width="66" height="10" rx="3"/><rect x="670" y="174" width="74" height="10" rx="3"/>
-    <rect x="814" y="174" width="70" height="10" rx="3"/><rect x="956" y="174" width="72" height="10" rx="3"/>
-    <rect x="1098" y="174" width="58" height="10" rx="3"/>
-    <rect x="116" y="740" width="83" height="10" rx="3"/><rect x="268" y="740" width="90" height="10" rx="3"/>
-    <rect x="490" y="740" width="106" height="10" rx="3"/><rect x="672" y="740" width="70" height="10" rx="3"/>
-    <rect x="814" y="740" width="70" height="10" rx="3"/><rect x="956" y="740" width="72" height="10" rx="3"/>
-  </g>
+  <!-- Санитарный блок: два нижних санузла и две раковины справа сверху -->
+  <path class="part" d="M1013 530H1064M1109 530H1187M1013 530V758M1104 658V758M1013 658H1053M1098 658H1110M1155 658H1187"/>
+  <path class="thin" d="M1109 530V485M1064 530A45 45 0 0 1 1109 485"/>
+  <path class="thin" d="M1098 658V703M1053 658A45 45 0 0 1 1098 703"/>
+  <path class="thin" d="M1110 658V703M1155 658A45 45 0 0 0 1110 703"/>
 
-  <!-- двери -->
+  <!-- Раковины расположены вертикально, как на исходнике -->
   <g class="thin">
-    <path d="M112 132V104L158 132"/><path d="M207 132V104L158 132"/>
-    <path d="M112 492V446A46 46 0 0 1 158 492"/><path d="M112 492H158"/>
-    <path d="M207 389H249V431A42 42 0 0 0 207 389"/><path d="M207 492H249V450A42 42 0 0 1 207 492"/>
-    <path d="M1190 456H1236V410A46 46 0 0 0 1190 456"/>
-    <path d="M1190 526H1144V480A46 46 0 0 0 1190 526"/>
-    <path d="M1017 657H1063V611A46 46 0 0 0 1017 657"/>
-    <path d="M1103 657H1149V611A46 46 0 0 0 1103 657"/>
+    <ellipse cx="1154" cy="570" rx="15" ry="17"/><circle cx="1154" cy="570" r="4"/><path d="M1169 570H1178"/>
+    <ellipse cx="1154" cy="616" rx="15" ry="17"/><circle cx="1154" cy="616" r="4"/><path d="M1169 616H1178"/>
+    <path d="M1042 716c0-11 7-19 15-19s15 8 15 19v26h-30zM1131 716c0-11 7-19 15-19s15 8 15 19v26h-30z"/>
+    <path d="M1046 742H1068M1135 742H1157"/>
   </g>
 
-  <!-- металлические колонны -->
+  <!-- Окна сверху -->
   <g>
-    <rect class="column" x="545" y="445" width="16" height="16"/>
-    <path class="thin" d="M541 441L565 465M565 441L541 465"/>
-    <rect class="column" x="868" y="445" width="16" height="16"/>
-    <path class="thin" d="M864 441L888 465M888 441L864 465"/>
-    <text class="tiny" x="553" y="427" text-anchor="middle">КОЛОННА</text>
-    <text class="tiny" x="876" y="427" text-anchor="middle">КОЛОННА</text>
+    <path class="window" d="M110 98V145H199V98M373 99V145H467V99M516 99V145H597V99M644 99V145H727V99M788 99V145H870V99M929 99V145H1010V99M1072 99V145H1155V99"/>
+    <path class="glass" d="M115 114H194M115 120H194M378 114H462M378 120H462M521 114H592M521 120H592M649 114H722M649 120H722M793 114H865M793 120H865M934 114H1005M934 120H1005M1077 114H1150M1077 120H1150"/>
   </g>
 
-  <!-- санузлы -->
-  <g class="thin">
-    <rect x="1039" y="548" width="128" height="82" rx="6"/>
-    <ellipse cx="1081" cy="589" rx="16" ry="21"/><ellipse cx="1125" cy="589" rx="16" ry="21"/>
-    <circle cx="1081" cy="589" r="5"/><circle cx="1125" cy="589" r="5"/>
-    <path d="M1048 695c0-17 13-29 29-29s29 12 29 29v34h-58zM1111 695c0-17 13-29 29-29s29 12 29 29v34h-58z"/>
-    <path d="M1055 729h44M1118 729h44"/>
-  </g>
-
-  <!-- размеры -->
+  <!-- Окна снизу -->
   <g>
-    <path class="measure" marker-start="url(#arrow)" marker-end="url(#arrow)" d="M249 716H1017"/>
-    <text class="dim" x="633" y="708" text-anchor="middle">15 110</text>
-    <path class="measure" marker-start="url(#arrow)" marker-end="url(#arrow)" d="M272 164V760"/>
-    <text class="dim" x="288" y="466" transform="rotate(-90 288 466)" text-anchor="middle">9 936</text>
-    <path class="measure" marker-start="url(#arrow)" marker-end="url(#arrow)" d="M553 480H876"/>
-    <text class="dim" x="714" y="474" text-anchor="middle">4 810</text>
-    <path class="measure" marker-start="url(#arrow)" marker-end="url(#arrow)" d="M876 382H1190"/>
-    <text class="dim" x="1033" y="376" text-anchor="middle">4 925</text>
-    <path class="measure" marker-start="url(#arrow)" marker-end="url(#arrow)" d="M584 461V716"/>
-    <text class="dim" x="600" y="590" transform="rotate(-90 600 590)" text-anchor="middle">4 915</text>
-    <path class="measure" marker-start="url(#arrow)" marker-end="url(#arrow)" d="M852 461V716"/>
-    <text class="dim" x="868" y="590" transform="rotate(-90 868 590)" text-anchor="middle">4 918</text>
+    <path class="window" d="M109 758V799H214V758M326 758V799H421V758M469 758V799H565V758M611 758V799H708V758M755 758V799H850V758M895 758V799H1003V758"/>
+    <path class="glass" d="M114 774H209M114 781H209M331 774H416M331 781H416M474 774H560M474 781H560M616 774H703M616 781H703M760 774H845M760 781H845M900 774H998M900 781H998"/>
   </g>
 
-  <!-- подписи помещений -->
+  <!-- Отопление и трубопроводы -->
+  <path class="heatline" d="M31 145H1185M207 145V758M109 758H1003"/>
+  <g class="heat">
+    <rect x="516" y="145" width="81" height="15"/><rect x="644" y="145" width="73" height="15"/>
+    <rect x="788" y="145" width="82" height="15"/><rect x="929" y="145" width="81" height="15"/>
+    <rect x="1072" y="145" width="83" height="15"/>
+    <rect x="114" y="741" width="93" height="15"/><rect x="337" y="741" width="84" height="15"/>
+    <rect x="469" y="741" width="116" height="15"/><rect x="622" y="741" width="87" height="15"/>
+    <rect x="766" y="741" width="84" height="15"/><rect x="907" y="741" width="91" height="15"/>
+  </g>
+  <path class="sewer" d="M1013 657H1053M1098 657H1110M1155 657H1187M1104 657V758"/>
+
+  <!-- Металлические колонны -->
+  <g>
+    <rect class="column" x="556" y="446" width="15" height="15"/>
+    <path class="thin" d="M552 442L575 465M575 442L552 465"/>
+    <rect class="column" x="867" y="446" width="15" height="15"/>
+    <path class="thin" d="M863 442L886 465M886 442L863 465"/>
+    <text class="tiny" x="563" y="425" text-anchor="middle">МЕТАЛЛИЧЕСКАЯ КОЛОННА</text>
+    <text class="tiny" x="875" y="425" text-anchor="middle">МЕТАЛЛИЧЕСКАЯ КОЛОННА</text>
+  </g>
+
+  <!-- Контрольные размеры и диагонали -->
+  <g>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M253 702H1013"/>
+    <text class="dim" x="633" y="696" text-anchor="middle">15 110</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M563 454H875"/>
+    <text class="dim" x="719" y="447" text-anchor="middle">4 810</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M563 461V702"/>
+    <text class="dim" x="573" y="586" transform="rotate(-90 573 586)" text-anchor="middle">4 915</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M875 461V702"/>
+    <text class="dim" x="885" y="586" transform="rotate(-90 885 586)" text-anchor="middle">4 918</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M890 454H1187"/>
+    <text class="dim" x="1038" y="448" text-anchor="middle">4 925</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M106 145V758"/>
+    <text class="dim" x="98" y="455" transform="rotate(-90 98 455)" text-anchor="middle">9 936</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M196 145V389"/>
+    <text class="dim" x="189" y="267" transform="rotate(-90 189 267)" text-anchor="middle">3 946</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M196 389V517"/>
+    <text class="dim" x="189" y="453" transform="rotate(-90 189 453)" text-anchor="middle">2 072</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M196 517V758"/>
+    <text class="dim" x="189" y="638" transform="rotate(-90 189 638)" text-anchor="middle">3 920</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M267 145V389"/>
+    <text class="dim" x="276" y="267" transform="rotate(-90 276 267)" text-anchor="middle">3 940</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M267 389V517"/>
+    <text class="dim" x="276" y="453" transform="rotate(-90 276 453)" text-anchor="middle">2 072</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M267 517V758"/>
+    <text class="dim" x="276" y="638" transform="rotate(-90 276 638)" text-anchor="middle">3 950</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M1162 145V364"/>
+    <text class="dim" x="1154" y="255" transform="rotate(-90 1154 255)" text-anchor="middle">3 845</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M1138 364V464"/>
+    <text class="dim" x="1130" y="414" transform="rotate(-90 1130 414)" text-anchor="middle">1 914</text>
+    <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M1187 364V431"/>
+    <text class="dim" x="1178" y="398" transform="rotate(-90 1178 398)" text-anchor="middle">891</text>
+
+    <path class="diag" d="M253 145L875 454L253 702L563 454L1187 145L875 454L1013 702"/>
+    <text class="tiny" x="463" y="331" transform="rotate(27 463 331)">5 044</text>
+    <text class="tiny" x="390" y="574" transform="rotate(-35 390 574)">7 039</text>
+    <text class="tiny" x="642" y="566" transform="rotate(-30 642 566)">18 047</text>
+    <text class="tiny" x="780" y="558" transform="rotate(28 780 558)">18 042</text>
+    <text class="tiny" x="1019" y="284" transform="rotate(-43 1019 284)">6 874</text>
+  </g>
+
+  <!-- Верхняя размерная цепочка -->
+  <g class="dimline">
+    <path d="M75 175H1187"/>
+    <path d="M75 166V184M110 166V184M199 166V184M253 166V184M373 166V184M467 166V184M516 166V184M597 166V184M644 166V184M727 166V184M788 166V184M870 166V184M929 166V184M1010 166V184M1072 166V184M1155 166V184M1187 166V184"/>
+  </g>
+  <g class="dim" text-anchor="middle">
+    <text x="92" y="173">552</text><text x="154" y="173">1476</text><text x="226" y="173">248</text>
+    <text x="313" y="173">1841</text><text x="420" y="173">1516</text><text x="491" y="173">785</text>
+    <text x="556" y="173">1335</text><text x="620" y="173">721</text><text x="685" y="173">1357</text>
+    <text x="758" y="173">984</text><text x="829" y="173">1335</text><text x="900" y="173">939</text>
+    <text x="969" y="173">1364</text><text x="1041" y="173">973</text><text x="1114" y="173">1360</text><text x="1171" y="173">368</text>
+  </g>
+
+  <!-- Марки окон -->
+  <g class="tiny" text-anchor="middle">
+    <text x="420" y="92">ОК-2</text><text x="556" y="92">ОК-1</text><text x="685" y="92">ОК-1</text>
+    <text x="829" y="92">ОК-1</text><text x="969" y="92">ОК-1</text><text x="1114" y="92">ОК-1</text>
+    <text x="373" y="818">ОК-1</text><text x="517" y="818">ОК-1</text><text x="659" y="818">ОК-1</text>
+    <text x="802" y="818">ОК-1</text><text x="949" y="818">ОК-1</text>
+  </g>
+
+  <!-- Нижняя размерная цепочка -->
+  <g class="dimline">
+    <path d="M109 724H1013"/>
+    <path d="M109 716V733M214 716V733M253 716V733M326 716V733M421 716V733M469 716V733M565 716V733M611 716V733M708 716V733M755 716V733M850 716V733M895 716V733M1003 716V733M1013 716V733"/>
+  </g>
+  <g class="dim" text-anchor="middle">
+    <text x="161" y="721">1332</text><text x="233" y="721">428</text><text x="289" y="721">1174</text>
+    <text x="373" y="721">1591</text><text x="445" y="721">1271</text><text x="517" y="721">1437</text>
+    <text x="588" y="721">857</text><text x="659" y="721">1402</text><text x="731" y="721">801</text>
+    <text x="802" y="721">1432</text><text x="872" y="721">845</text><text x="949" y="721">1416</text>
+  </g>
+
+  <!-- Площади помещений, без придуманных назначений -->
   <g text-anchor="middle">
-    <text class="label" x="136" y="397">Доп. помещение</text>
-    <text class="area" x="136" y="421">22,4 м²</text>
-    <text class="label" x="628" y="352">Основной зал</text>
-    <text class="area" x="628" y="378">150,0 м²</text>
-    <text class="label" x="1036" y="267">Отдельная зона</text>
-    <text class="label" x="1103" y="683">Два санузла</text>
+    <circle cx="151" cy="362" r="18" fill="none" stroke="#806f60"/><text class="label" x="151" y="359">1</text><text class="small" x="151" y="375">22,4</text>
+    <circle cx="447" cy="362" r="18" fill="none" stroke="#806f60"/><text class="label" x="447" y="359">2</text><text class="small" x="447" y="375">150,0</text>
+    <text class="label" x="725" y="377">S пом. общая = 172,4 м²</text>
+    <text class="small" x="141" y="646">Подсобное</text>
+    <text class="small" x="141" y="662">помещение</text>
+    <text class="tiny" x="235" y="455" transform="rotate(-90 235 455)">АРКА</text>
   </g>
 
-  <!-- легенда -->
-  <g transform="translate(66 850)">
-    <rect x="0" y="0" width="1148" height="76" rx="18" fill="#fbfaf8" stroke="#cbd1d2"/>
-    <rect x="28" y="24" width="44" height="12" rx="3" class="heater"/>
-    <text class="note" x="88" y="35">Приборы отопления</text>
-    <rect x="315" y="21" width="18" height="18" class="column"/>
-    <text class="note" x="350" y="35">Металлические колонны</text>
-    <path class="thin" d="M624 30H672"/>
-    <text class="note" x="690" y="35">Двери и перегородки</text>
-    <path class="measure" d="M902 30H950"/>
-    <text class="note" x="968" y="35">Контрольный размер</text>
-    <text class="tiny" x="28" y="60">Схема перерисована по исходному обмерному плану без изменения указанных размеров</text>
+  <!-- Легенда -->
+  <g transform="translate(84 844)">
+    <rect x="0" y="0" width="1112" height="100" rx="18" fill="#fbfaf8" stroke="#c8d0d1"/>
+    <rect class="wall" x="28" y="22" width="42" height="14"/><text class="small" x="83" y="34">стены и простенки</text>
+    <rect class="heat" x="265" y="22" width="42" height="12"/><text class="small" x="320" y="34">приборы отопления</text>
+    <path class="heatline" d="M515 28H557"/><text class="small" x="570" y="34">трубопроводы отопления</text>
+    <path class="sewer" d="M789 28H831"/><text class="small" x="844" y="34">трубопроводы канализации</text>
+    <text class="tiny" x="28" y="63">На плане сохранены исходные стены, проёмы, окна, колонны, сантехника и подписанные размеры. Назначения неподписанных зон не добавлялись.</text>
+    <text class="tiny" x="28" y="80">ОК-2: низ окна 1 460 мм, высота 1 516 мм. ОК-1: высота 2 191 мм, высота низа в исходнике не указана.</text>
   </g>
 </svg>
