@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 984" role="img" aria-labelledby="title desc">
   <title id="title">План пространства SOLDOUT</title>
-  <desc id="desc">Векторный план пространства SOLDOUT общей площадью 172,4 квадратного метра. Показаны стены, проёмы, окна, колонны, санузлы, отопление и исходные размеры.</desc>
+  <desc id="desc">Векторный план пространства SOLDOUT общей площадью 172,4 квадратного метра. Показаны стены, проёмы, окна, колонны, гримерная, санузлы, отопление и исходные размеры.</desc>
   <defs>
     <style>
       .bg{fill:#f2efeb}.paper{fill:#fbfaf8}.wall{fill:#3f5a73}.part{fill:none;stroke:#253640;stroke-width:3}
@@ -65,6 +65,7 @@
   <!-- Короткая вертикаль идёт только от верхней стены до границы зоны.
        Ниже границы продолжения и второй горизонтали нет. -->
   <path class="part" d="M890 145V364H1187"/>
+  <text class="label" x="1038" y="250" text-anchor="middle">Гримерка</text>
 
   <!-- Левое дополнительное помещение -->
   <path class="part" d="M75 540H108M169 540H207"/>
@@ -198,7 +199,7 @@
     <text x="802" y="721">1432</text><text x="872" y="721">845</text><text x="949" y="721">1416</text>
   </g>
 
-  <!-- Площади помещений, без придуманных назначений -->
+  <!-- Площади и назначения помещений -->
   <g text-anchor="middle">
     <circle cx="151" cy="362" r="18" fill="none" stroke="#806f60"/><text class="label" x="151" y="359">1</text><text class="small" x="151" y="375">22,4</text>
     <circle cx="447" cy="362" r="18" fill="none" stroke="#806f60"/><text class="label" x="447" y="359">2</text><text class="small" x="447" y="375">150,0</text>
@@ -214,8 +215,7 @@
     <rect class="wall" x="28" y="22" width="42" height="14"/><text class="small" x="83" y="34">стены и простенки</text>
     <rect class="heat" x="265" y="22" width="42" height="12"/><text class="small" x="320" y="34">приборы отопления</text>
     <path class="heatline" d="M515 28H557"/><text class="small" x="570" y="34">трубопроводы отопления</text>
-    <path class="sewer" d="M789 28H831"/><text class="small" x="844" y="34">трубопроводы канализации</text>
-    <text class="tiny" x="28" y="63">На плане сохранены исходные стены, проёмы, окна, колонны, сантехника и подписанные размеры. Назначения неподписанных зон не добавлялись.</text>
+    <text class="tiny" x="28" y="63">На плане сохранены исходные стены, проёмы, окна, колонны, сантехника и подписанные размеры.</text>
     <text class="tiny" x="28" y="80">ОК-2: низ окна 1 460 мм, высота 1 516 мм. ОК-1: высота 2 191 мм, высота низа в исходнике не указана.</text>
   </g>
 </svg>
