@@ -20,7 +20,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
+          # Текущий FTP-пользователь Timeweb принимает вход только в обычном режиме.
+          # После включения FTPS для этого пользователя здесь можно вернуть ftps.
+          protocol: ftp
           local-dir: ./
           server-dir: /soldout/public_html/
           exclude: |
