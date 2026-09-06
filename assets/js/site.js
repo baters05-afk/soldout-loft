@@ -99,7 +99,12 @@ function lbShow(i){
   document.getElementById('lb-cap').textContent = s.cap;
   document.getElementById('lb-num').textContent = `${lbI + 1} / ${shots.length}`;
 }
-function lbOpen(i){ lbShow(i); lbEl.classList.add('open'); document.body.style.overflow='hidden'; }
+function lbOpen(i){
+  lbShow(i);
+  lbEl.classList.add('open');
+  document.body.style.overflow='hidden';
+  trackGoal('gallery_open', {image:i + 1});
+}
 function lbClose(){ lbEl.classList.remove('open'); document.body.style.overflow=''; }
 function lbGo(d){ lbShow(lbI + d); }
 document.querySelectorAll('.gal figure').forEach((f, i) => {
@@ -139,9 +144,15 @@ const calEl = document.getElementById('cal');
 function calOpen(e){
   if (e) e.preventDefault();
   const f = document.getElementById('cal-if');
-  if (!f.src && f.dataset.src) f.src = f.dataset.src;
+  if (f?.dataset.src) {
+    const url = new URL(f.dataset.src);
+    url.searchParams.set('mode', matchMedia('(max-width: 640px)').matches ? 'AGENDA' : 'MONTH');
+    const wanted = url.toString();
+    if (f.src !== wanted) f.src = wanted;
+  }
   calEl.classList.add('open');
   document.body.style.overflow = 'hidden';
+  trackGoal('calendar_open');
 }
 function calClose(){
   calEl.classList.remove('open');
@@ -155,6 +166,31 @@ document.querySelectorAll('[data-cal]').forEach(b => b.addEventListener('click',
 /* cookie: выбор запоминается, баннер больше не показывается.
    Аналитику и прочие необязательные скрипты подключайте внутри ckApply('all'). */
 const CK='soldout-cookie';
+const METRIKA_ID = Number(window.SOLDOUT_METRIKA_ID) || 0;
+let metrikaReady = false;
+
+function loadMetrika(){
+  if (!METRIKA_ID || metrikaReady) return;
+  metrikaReady = true;
+  window.ym = window.ym || function(){ (window.ym.a = window.ym.a || []).push(arguments); };
+  window.ym.l = Date.now();
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://mc.yandex.ru/metrika/tag.js';
+  document.head.appendChild(s);
+  window.ym(METRIKA_ID, 'init', {
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true
+  });
+}
+
+function trackGoal(name, params){
+  if (!METRIKA_ID || typeof window.ym !== 'function') return;
+  window.ym(METRIKA_ID, 'reachGoal', name, params || {});
+}
+
 function ckSet(v){
   try{ localStorage.setItem(CK,v); }catch(e){}
   document.getElementById('ck').classList.remove('show');
@@ -162,7 +198,7 @@ function ckSet(v){
 }
 function ckApply(v){
   if (v === 'all') {
-    // здесь можно запускать Яндекс.Метрику / Google Analytics
+    loadMetrika();
   }
 }
 (function(){
@@ -170,6 +206,17 @@ function ckApply(v){
   if (v) { ckApply(v); return; }
   setTimeout(()=>document.getElementById('ck').classList.add('show'), 1400);
 })();
+
+document.addEventListener('click', e => {
+  const link = e.target.closest('a,button');
+  if (!link) return;
+  const href = link.getAttribute('href') || '';
+  const explicit = link.dataset.goal;
+  if (explicit) trackGoal(explicit);
+  else if (href.startsWith('https://t.me/')) trackGoal('telegram_click');
+  else if (href.startsWith('tel:')) trackGoal('phone_click');
+  else if (href === '#price') trackGoal('price_click');
+});
 
 /* ── окно реквизитов + удержание фокуса в модальных окнах ──────
    Пока окно открыто, Tab не уводит на страницу за ним. */
@@ -221,6 +268,8 @@ const LEAD_URL = (window.SOLDOUT_LEAD_URL || '').trim() || 'api/lead.php';
   const name = form.querySelector('input[name="name"]');
   const btn  = form.querySelector('button[type="submit"]');
   const ok   = form.querySelector('input[type="checkbox"]');
+  const consent = form.querySelector('.cons');
+  const consentErr = form.querySelector('.consent-error');
 
   /* сообщения об ошибке рядом с полем */
   const errBox = (input) => {
@@ -263,15 +312,33 @@ const LEAD_URL = (window.SOLDOUT_LEAD_URL || '').trim() || 'api/lead.php';
     else setErr(name, '');
     if (tel.value.replace(/\D/g, '').length !== 11) { setErr(tel, 'Введите номер полностью'); good = false; }
     else setErr(tel, '');
-    if (ok && !ok.checked) good = false;
+    if (ok && !ok.checked) {
+      consent?.setAttribute('aria-invalid', 'true');
+      if (consentErr) consentErr.textContent = 'Подтвердите согласие на обработку данных';
+      good = false;
+    } else {
+      consent?.removeAttribute('aria-invalid');
+      if (consentErr) consentErr.textContent = '';
+    }
     return good;
   };
+
+  ok?.addEventListener('change', () => {
+    if (ok.checked) {
+      consent?.removeAttribute('aria-invalid');
+      if (consentErr) consentErr.textContent = '';
+    }
+  });
 
   form.removeAttribute('onsubmit');
   form.setAttribute('novalidate', '');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!check()) { form.querySelector('[aria-invalid="true"]')?.focus(); return; }
+    if (!check()) {
+      const invalid = form.querySelector('input[aria-invalid="true"]') || (ok && !ok.checked ? ok : null);
+      invalid?.focus();
+      return;
+    }
 
     btn.disabled = true;
     btn.textContent = 'Отправляем…';
@@ -294,8 +361,10 @@ const LEAD_URL = (window.SOLDOUT_LEAD_URL || '').trim() || 'api/lead.php';
       done.className = 'sent';
       done.setAttribute('role', 'status');
       done.textContent = 'Запрос получен. Менеджер проверит дату и свяжется с вами.';
+      trackGoal('lead_success');
       form.replaceChildren(done);
     } catch (err) {
+      trackGoal('lead_error');
       // заявка не должна теряться: показываем запасной путь связи
       let box = form.querySelector('.fail');
       if (!box) {

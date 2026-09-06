@@ -25,12 +25,10 @@
 <meta name="twitter:title" content="Аренда лофта в Москве для мероприятий — SOLDOUT, 175 м²">
 <meta name="twitter:description" content="Лофт 175 м² с гримеркой у м. Электрозаводская. Свадьбы, корпоративы, съёмки. От 4 000 ₽/час, всё оборудование включено, без ограничений по шуму.">
 <meta name="twitter:image" content="https://soloft.ru/assets/opt/ev-02-1024.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Jost — ближайший бесплатный аналог фирменного NAMU Pro: тот же геометрический
-     гротеск с одноэтажной «а» и полной кириллицей -->
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="assets/js/config.js?v=20260807"></script>
+     гротеск с одноэтажной «а» и полной кириллицей. Шрифт хранится локально,
+     чтобы первый экран не зависел от внешних сервисов. -->
+<script src="assets/js/config.js?v=20260906-1"></script>
 <script>
   // Анимации включаются только при живом JS и если пользователь их не отключил.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -48,6 +46,7 @@
   "telephone":"+7-985-362-45-58",
   "email":"soldout-loft@yandex.ru",
   "maximumAttendeeCapacity":100,
+  "floorSize":{"@type":"QuantitativeValue","value":172.4,"unitCode":"MTK"},
   "address":{
     "@type":"PostalAddress",
     "streetAddress":"ул. Малая Семёновская, д. 5, стр. 10",
@@ -85,7 +84,7 @@
      после этого не перезапрашивает их даже при перезагрузке. Сменить номер версии —
      единственный способ отдать посетителю новый файл. Правится при каждом
      изменении site.css / site.js. -->
-<link rel="stylesheet" href="assets/css/site.css?v=20260829-2">
+<link rel="stylesheet" href="assets/css/site.css?v=20260906-1">
 </head>
 <body>
 
@@ -100,6 +99,7 @@
     <a href="#price">Цены</a>
     <a href="#catering">Кейтеринг</a>
     <a href="#space">Пространство</a>
+    <a href="#plan">План</a>
     <a href="#faq">Вопросы</a>
   </nav>
   <div class="hd-r">
@@ -381,6 +381,33 @@
   </div>
 </section>
 
+<!-- ═══════════ ПЛАН ПРОСТРАНСТВА ═══════════ -->
+<section class="plan-section" id="plan">
+  <div class="wrap">
+    <div class="plan-head">
+      <div class="sh rv">
+        <span class="lbl">План и размеры</span>
+        <h2 class="h2">Понятно, как всё устроено</h2>
+        <p class="lead">Обмерный план без изменения пропорций и размеров. На нём видны основной зал, дополнительное помещение, отдельная зона, санузлы и две металлические колонны.</p>
+      </div>
+      <dl class="plan-facts rv">
+        <div><dt>172,4 м²</dt><dd>общая площадь</dd></div>
+        <div><dt>150,0 м²</dt><dd>основной зал</dd></div>
+        <div><dt>22,4 м²</dt><dd>доп. помещение</dd></div>
+      </dl>
+    </div>
+    <figure class="plan-card rv">
+      <div class="plan-scroll" tabindex="0" aria-label="План помещения. На телефоне схему можно прокручивать по горизонтали.">
+        <img src="assets/brand/floor-plan.svg?v=20260906-1" width="1280" height="984" loading="lazy" decoding="async" alt="План лофта SOLDOUT общей площадью 172,4 м² с основным залом 150 м², дополнительным помещением, отдельной зоной и двумя санузлами">
+      </div>
+      <figcaption>
+        <span>Все размеры в миллиметрах</span>
+        <a href="assets/brand/floor-plan.svg?v=20260906-1" target="_blank" rel="noopener" data-goal="floor_plan_open">Открыть план крупно</a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 <!-- ═══════════ ГРИМЕРНАЯ ═══════════ -->
 <section>
   <div class="wrap feat">
@@ -424,7 +451,7 @@
         <div class="st">★★★★★</div>
         <blockquote>«Уютно, оформлено со вкусом (что редкость). Администратор на мероприятии чётко всё сопровождает, учитывает все пожелания».</blockquote>
         <cite>Частное мероприятие</cite>
-        
+        <a href="https://yandex.ru/maps/org/41831610758/reviews/" target="_blank" rel="noopener nofollow">Отзывы на Яндекс.Картах</a>
       </article>
       <article class="rv">
         <div class="st">★★★★★</div>
@@ -507,9 +534,10 @@
         <label><span class="lbl">Дата и формат</span><input name="date" placeholder="14 марта, корпоратив на 60 человек"></label>
         <!-- ловушка для ботов: поле спрятано от людей, но заполняется скриптами -->
         <input class="trap" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="cons"><input type="checkbox" required>
+        <label class="cons"><input type="checkbox" required aria-describedby="consent-error">
           <span>Даю <a href="/agreement">согласие на обработку персональных данных</a>
             и принимаю <a href="/privacy">политику конфиденциальности</a>.</span></label>
+        <span class="err consent-error" id="consent-error" role="alert" aria-live="polite"></span>
         <button class="btn btn-p" type="submit">Отправить запрос</button>
         <p class="lbl contact-fast">Или сразу в мессенджер — так быстрее</p>
         <div class="contact-messengers">
@@ -646,6 +674,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
 </a>
 
-<script src="assets/js/site.js?v=20260828-1" defer></script>
+<script src="assets/js/site.js?v=20260906-1" defer></script>
 </body>
 </html>

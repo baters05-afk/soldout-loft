@@ -79,12 +79,9 @@ ErrorDocument 404 /404.html
 </Files>
 
 
-# ── Кэш ────────────────────────────────────────────────────────────
-# Стили и скрипт — с обязательной перепроверкой. Ровно на этом мы уже
-# обожглись: заголовок immutable запирал старую версию в браузере на
-# год, и правки не доходили до тех, кто был на сайте раньше.
-# В адресах стилей и скрипта стоит ?v=, его меняем при каждой правке.
-
+# ── Кэш и защитные заголовки ───────────────────────────────────────
+# CSS и JS всегда перепроверяются; статичные изображения и шрифты
+# кэшируются на месяц и обновляются через номер версии в URL.
 <IfModule mod_headers.c>
   <FilesMatch "\.(css|js)$">
     Header set Cache-Control "public, max-age=0, must-revalidate"
@@ -96,8 +93,12 @@ ErrorDocument 404 /404.html
     Header set Cache-Control "public, max-age=2592000, must-revalidate"
   </FilesMatch>
 
-  Header set X-Content-Type-Options "nosniff"
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), payment=()"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://mc.yandex.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://mc.yandex.ru https://mc.yandex.com; connect-src 'self' https://mc.yandex.ru https://mc.yandex.com; frame-src https://calendar.google.com https://yandex.ru https://*.yandex.ru"
 </IfModule>
 
 
@@ -111,5 +112,6 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_mime.c>
   AddType image/webp .webp
+  AddType font/woff2 .woff2
   AddType application/manifest+json .webmanifest
 </IfModule>
