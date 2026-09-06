@@ -24,7 +24,8 @@ jobs:
           # После включения FTPS для этого пользователя здесь можно вернуть ftps.
           protocol: ftp
           local-dir: ./
-          server-dir: /soldout/public_html/
+          # Пользователь cq746747_soldout уже ограничен этой папкой в Timeweb.
+          server-dir: /
           exclude: |
             **/.git*
             /.git*/
