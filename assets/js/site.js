@@ -176,13 +176,17 @@ function loadMetrika(){
   window.ym.l = Date.now();
   const s = document.createElement('script');
   s.async = true;
-  s.src = 'https://mc.yandex.ru/metrika/tag.js';
+  s.src = `https://mc.yandex.ru/metrika/tag.js?id=${METRIKA_ID}`;
   document.head.appendChild(s);
   window.ym(METRIKA_ID, 'init', {
+    ssr:true,
+    webvisor:true,
     clickmap:true,
+    ecommerce:'dataLayer',
+    referrer:document.referrer,
+    url:location.href,
     trackLinks:true,
-    accurateTrackBounce:true,
-    webvisor:true
+    accurateTrackBounce:true
   });
 }
 
