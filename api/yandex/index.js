@@ -111,12 +111,16 @@ module.exports.handler = async function (event) {
 
   let data = {};
   try { data = JSON.parse(raw); } catch { data = {}; }
-  const { name = '', phone = '', date = '', company = '' } = data;
+  const {
+    name = '', phone = '', date = '', company = '', consent = false,
+    consent_version: consentVersion = '', consented_at: consentedAt = '', source = ''
+  } = data;
 
   // Скрытое поле: люди его не видят, боты заполняют
   if (company) return reply(200, { ok: true }, origin);
 
-  if (!String(name).trim() || String(phone).replace(/\D/g, '').length < 11) {
+  if (!String(name).trim() || String(phone).replace(/\D/g, '').length < 11 ||
+      consent !== true || !String(consentVersion).trim() || !String(consentedAt).trim()) {
     return reply(400, { ok: false, error: 'Проверьте имя и телефон' }, origin);
   }
 
@@ -128,6 +132,9 @@ module.exports.handler = async function (event) {
     `<tr><td style="color:#666">Имя</td><td><b>${esc(name)}</b></td></tr>` +
     `<tr><td style="color:#666">Телефон</td><td><b>${esc(phone)}</b></td></tr>` +
     (date ? `<tr><td style="color:#666">Дата и формат</td><td>${esc(date)}</td></tr>` : '') +
+    `<tr><td style="color:#666">Согласие</td><td>Получено · версия ${esc(consentVersion)}</td></tr>` +
+    `<tr><td style="color:#666">Время согласия</td><td>${esc(consentedAt)}</td></tr>` +
+    (source ? `<tr><td style="color:#666">Страница</td><td>${esc(source)}</td></tr>` : '') +
     `<tr><td style="color:#666">Получено</td><td>${moscow} МСК</td></tr>` +
     '</table></body></html>';
 

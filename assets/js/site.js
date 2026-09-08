@@ -138,18 +138,10 @@ lbEl.addEventListener('touchend', e => {
   if (Math.abs(d) > 55) lbGo(d < 0 ? 1 : -1);
 }, {passive:true});
 
-/* календарь занятости: iframe грузится только при первом открытии,
-   чтобы не тянуть Google на каждой загрузке страницы */
+/* Календарь открывается внешней ссылкой: Google не загружается внутри сайта. */
 const calEl = document.getElementById('cal');
 function calOpen(e){
   if (e) e.preventDefault();
-  const f = document.getElementById('cal-if');
-  if (f?.dataset.src) {
-    const url = new URL(f.dataset.src);
-    url.searchParams.set('mode', matchMedia('(max-width: 640px)').matches ? 'AGENDA' : 'MONTH');
-    const wanted = url.toString();
-    if (f.src !== wanted) f.src = wanted;
-  }
   calEl.classList.add('open');
   document.body.style.overflow = 'hidden';
   trackGoal('calendar_open');
@@ -165,7 +157,8 @@ document.querySelectorAll('[data-cal]').forEach(b => b.addEventListener('click',
 
 /* cookie: выбор запоминается, баннер больше не показывается.
    Аналитику и прочие необязательные скрипты подключайте внутри ckApply('all'). */
-const CK='soldout-cookie';
+const CK='soldout-cookie-v20260908';
+const CK_VERSION='2026-09-08';
 const METRIKA_ID = Number(window.SOLDOUT_METRIKA_ID) || 0;
 let metrikaReady = false;
 
@@ -196,7 +189,7 @@ function trackGoal(name, params){
 }
 
 function ckSet(v){
-  try{ localStorage.setItem(CK,v); }catch(e){}
+  try{ localStorage.setItem(CK,JSON.stringify({value:v,version:CK_VERSION,chosenAt:new Date().toISOString()})); }catch(e){}
   document.getElementById('ck').classList.remove('show');
   ckApply(v);
 }
@@ -206,10 +199,27 @@ function ckApply(v){
   }
 }
 (function(){
-  let v=null; try{ v=localStorage.getItem(CK); }catch(e){}
+  let v=null;
+  try{
+    const saved=JSON.parse(localStorage.getItem(CK) || 'null');
+    if (saved?.version === CK_VERSION) v=saved.value;
+  }catch(e){}
   if (v) { ckApply(v); return; }
   setTimeout(()=>document.getElementById('ck').classList.add('show'), 1400);
 })();
+
+/* Карта Яндекса не получает данны до явного нажатия посетителя. */
+document.getElementById('map-load')?.addEventListener('click', () => {
+  const map = document.getElementById('venue-map');
+  if (!map || map.querySelector('iframe')) return;
+  const frame = document.createElement('iframe');
+  frame.title = 'Карта: Малая Семёновская 5, строение 10';
+  frame.loading = 'lazy';
+  frame.allowFullscreen = true;
+  frame.src = 'https://yandex.ru/map-widget/v1/?text=Москва%2C%20Малая%20Семёновская%205%20стр%2010&z=16';
+  map.replaceChildren(frame);
+  trackGoal('map_open');
+});
 
 document.addEventListener('click', e => {
   const link = e.target.closest('a,button');
@@ -355,7 +365,11 @@ const LEAD_URL = (window.SOLDOUT_LEAD_URL || '').trim() || 'api/lead.php';
           name:  name.value.trim(),
           phone: tel.value,
           date:  form.querySelector('input[name="date"]')?.value.trim() || '',
-          company: form.querySelector('input[name="company"]')?.value || ''
+          company: form.querySelector('input[name="company"]')?.value || '',
+          consent: true,
+          consent_version: '2026-09-08',
+          consented_at: new Date().toISOString(),
+          source: location.origin + location.pathname
         })
       });
       const data = await r.json().catch(() => ({}));

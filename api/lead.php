@@ -49,12 +49,16 @@ $name    = $clean($data['name']    ?? '');
 $phone   = $clean($data['phone']   ?? '');
 $date    = $clean($data['date']    ?? '');
 $company = trim((string)($data['company'] ?? ''));
+$consent = ($data['consent'] ?? false) === true;
+$consentVersion = $clean($data['consent_version'] ?? '');
+$consentedAt = $clean($data['consented_at'] ?? '');
+$source = $clean($data['source'] ?? '');
 
 // Скрытое поле: люди его не видят, боты заполняют. Молча принимаем.
 if ($company !== '') out(200, ['ok' => true]);
 
 $digits = preg_replace('/\D/', '', $phone) ?? '';
-if ($name === '' || mb_strlen($digits) < 11) {
+if ($name === '' || mb_strlen($digits) < 11 || !$consent || $consentVersion === '' || $consentedAt === '') {
     out(400, ['ok' => false, 'error' => 'Проверьте имя и телефон']);
 }
 
@@ -77,6 +81,9 @@ $html = '<html><body style="font-family:Arial,sans-serif;font-size:15px;color:#1
       . '<tr><td style="color:#666">Имя</td><td><b>' . $esc($name) . '</b></td></tr>'
       . '<tr><td style="color:#666">Телефон</td><td><b>' . $esc($phone) . '</b></td></tr>'
       . ($date !== '' ? '<tr><td style="color:#666">Дата и формат</td><td>' . $esc($date) . '</td></tr>' : '')
+      . '<tr><td style="color:#666">Согласие</td><td>Получено · версия ' . $esc($consentVersion) . '</td></tr>'
+      . '<tr><td style="color:#666">Время согласия</td><td>' . $esc($consentedAt) . '</td></tr>'
+      . ($source !== '' ? '<tr><td style="color:#666">Страница</td><td>' . $esc($source) . '</td></tr>' : '')
       . '<tr><td style="color:#666">Получено</td><td>' . date('d.m.Y H:i') . ' МСК</td></tr>'
       . '</table></body></html>';
 

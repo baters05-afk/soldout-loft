@@ -84,7 +84,7 @@
      после этого не перезапрашивает их даже при перезагрузке. Сменить номер версии —
      единственный способ отдать посетителю новый файл. Правится при каждом
      изменении site.css / site.js. -->
-<link rel="stylesheet" href="assets/css/site.css?v=20260907-2">
+<link rel="stylesheet" href="assets/css/site.css?v=20260908-1">
 </head>
 <body>
 
@@ -531,14 +531,14 @@
 
     <div class="ct">
       <form class="form rv">
-        <label><span class="lbl">Как вас зовут</span><input name="name" required placeholder="Имя"></label>
-        <label><span class="lbl">Телефон или мессенджер</span><input name="phone" type="tel" required placeholder="+7 ___ ___-__-__"></label>
-        <label><span class="lbl">Дата и формат</span><input name="date" placeholder="14 марта, корпоратив на 60 человек"></label>
+        <label><span class="lbl">Как вас зовут</span><input class="ym-disable-keys" name="name" required placeholder="Имя"></label>
+        <label><span class="lbl">Телефон</span><input class="ym-disable-keys" name="phone" type="tel" required placeholder="+7 ___ ___-__-__"></label>
+        <label><span class="lbl">Дата и формат</span><input class="ym-disable-keys" name="date" placeholder="14 марта, корпоратив на 60 человек"></label>
         <!-- ловушка для ботов: поле спрятано от людей, но заполняется скриптами -->
         <input class="trap" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="cons"><input type="checkbox" required aria-describedby="consent-error">
-          <span>Даю <a href="/agreement">согласие на обработку персональных данных</a>
-            и принимаю <a href="/privacy">политику конфиденциальности</a>.</span></label>
+          <span>Даю <a href="/agreement">согласие на обработку персональных данных</a>.</span></label>
+        <p class="form-policy">Порядок обработки данных описан в <a href="/privacy">политике</a>.</p>
         <span class="err consent-error" id="consent-error" role="alert" aria-live="polite"></span>
         <button class="btn btn-p" type="submit">Отправить запрос</button>
         <p class="lbl contact-fast">Или сразу в мессенджер — так быстрее</p>
@@ -555,9 +555,12 @@
           <div><span class="lbl">Почта</span><a href="mailto:soldout-loft@yandex.ru">soldout-loft@yandex.ru</a></div>
           <div><span class="lbl">Показы</span><p>Ежедневно с 10:00 до 22:00, по договорённости</p></div>
         </div>
-        <div class="map">
-          <iframe title="Карта: Малая Семёновская 5с10" loading="lazy" allowfullscreen
-            src="https://yandex.ru/map-widget/v1/?text=Москва%2C%20Малая%20Семёновская%205%20стр%2010&z=16"></iframe>
+        <div class="map" id="venue-map">
+          <div class="map-permission">
+            <p><strong>Карта Малой Семёновской, 5, стр. 10</strong><br>
+              Виджет загрузится с сервиса Яндекс Карты и получит технические данны о визите.</p>
+            <button class="btn btn-o btn-sm" type="button" id="map-load">Показать карту</button>
+          </div>
         </div>
         <!-- rtext=~адрес: точка отправления пустая, Яндекс подставит текущее
              местоположение пользователя; rtt задаёт способ передвижения -->
@@ -649,8 +652,9 @@
       <button class="md-x" onclick="calClose()" aria-label="Закрыть">×</button>
     </div>
     <div class="md-b">
-      <div class="cal-fr">
-        <iframe id="cal-if" title="Календарь занятости SOLDOUT" loading="lazy" data-src="https://calendar.google.com/calendar/embed?src=56blb2jco2gqc63pnhgq71anfg%40group.calendar.google.com&ctz=Europe%2FMoscow&mode=MONTH&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&wkst=2&bgcolor=%23ffffff&color=%233F5A73"></iframe>
+      <div class="cal-fr cal-external">
+        <p>Календарь размещён во внешнем сервисе Google. Он откроется в новой вкладке и будет работать по правилам этого сервиса.</p>
+        <a class="btn btn-p" href="https://calendar.google.com/calendar/embed?src=56blb2jco2gqc63pnhgq71anfg%40group.calendar.google.com&ctz=Europe%2FMoscow&mode=AGENDA&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&wkst=2&bgcolor=%23ffffff&color=%233F5A73" target="_blank" rel="noopener noreferrer">Открыть календарь</a>
       </div>
     </div>
     <div class="md-f">
@@ -664,10 +668,10 @@
 </div>
 
 <div class="ck" id="ck" role="dialog" aria-label="Файлы cookie">
-  <p>Сайт использует файлы cookie, чтобы работать корректно и понимать, какие страницы вам полезны.
-     Подробнее — в <a href="/privacy">политике конфиденциальности</a>.</p>
+  <p>Сайт использует необходимые данные для работы. Яндекс Метрика подключится только с вашего разрешения.
+     Подробнее — в <a href="/privacy">политике обработки персональных данных</a>.</p>
   <div class="ck-b">
-    <button class="btn btn-p btn-sm" onclick="ckSet('all')">Принять</button>
+    <button class="btn btn-p btn-sm" onclick="ckSet('all')">Разрешить аналитику</button>
     <button class="btn btn-o btn-sm" onclick="ckSet('necessary')">Только необходимые</button>
   </div>
 </div>
@@ -676,6 +680,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
 </a>
 
-<script src="assets/js/site.js?v=20260907-1" defer></script>
+<script src="assets/js/site.js?v=20260908-1" defer></script>
 </body>
 </html>
