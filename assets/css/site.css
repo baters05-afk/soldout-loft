@@ -406,6 +406,8 @@ footer .wrap{position:relative;z-index:1}
 .fg a{display:block;margin-bottom:9px;transition:color .25s}
 .fg a:hover{color:var(--slate)}
 .req{font-size:.76rem;line-height:1.7;color:var(--ink-40);border-top:1px solid var(--ink-12);padding-top:20px}
+.dev-credit{border-bottom:1px solid currentColor;transition:color .25s}
+.dev-credit:hover{color:var(--slate)}
 
 /* ───────── календарь занятости ───────── */
 .md{position:fixed;inset:0;z-index:110;display:grid;place-items:center;padding:16px;
