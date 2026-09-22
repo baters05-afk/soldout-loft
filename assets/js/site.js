@@ -59,6 +59,16 @@ addEventListener('scroll', sweep, {passive:true});
 addEventListener('load', sweep);
 setTimeout(sweep, 1200);
 
+/* FAQ: при загрузке всё закрыто, одновременно открыт только один ответ */
+const faqItems = [...document.querySelectorAll('.faq details')];
+faqItems.forEach(item => {
+  item.open = false;
+  item.addEventListener('toggle', () => {
+    if (!item.open) return;
+    faqItems.forEach(other => { if (other !== item) other.open = false; });
+  });
+});
+
 function countTo(el){
   const to = +el.dataset.n, pre = el.dataset.pre || '';
   if (reduce) { el.textContent = pre + to; return; }
