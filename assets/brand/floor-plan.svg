@@ -7,7 +7,7 @@
       .thin{fill:none;stroke:#3f5a73;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
       .window{fill:#fbfaf8;stroke:#3f5a73;stroke-width:1.8}.glass{stroke:#8da0aa;stroke-width:1}
       .heat{fill:#8c796b}.heatline{fill:none;stroke:#8c796b;stroke-width:2}.sewer{fill:none;stroke:#253640;stroke-width:3}
-      .dimline{fill:none;stroke:#8c796b;stroke-width:1.15}.diag{fill:none;stroke:#3f5a73;stroke-width:1.15;opacity:.72}
+      .dimline{fill:none;stroke:#8c796b;stroke-width:1.15}
       .hatch{fill:#e8edec}.wet{fill:#edf1f0}.column{fill:#3f5a73;stroke:#17262f;stroke-width:1.5}
       .head{font:500 30px Jost,Arial,sans-serif;letter-spacing:.04em;fill:#17262f}
       .kicker{font:500 13px Jost,Arial,sans-serif;letter-spacing:.22em;fill:#806f60}
@@ -64,7 +64,8 @@
 
   <!-- Короткая вертикаль идёт только от верхней стены до границы зоны.
        Ниже границы продолжения и второй горизонтали нет. -->
-  <path class="part" d="M890 145V364H1187"/>
+  <path class="part" d="M890 145V364H1064M1109 364H1187"/>
+  <path class="thin" d="M1109 364V409M1064 364A45 45 0 0 0 1109 409"/>
   <text class="label" x="1038" y="250" text-anchor="middle">Гримерка</text>
 
   <!-- Левое дополнительное помещение -->
@@ -125,7 +126,7 @@
     <text class="tiny" x="875" y="425" text-anchor="middle">МЕТАЛЛИЧЕСКАЯ КОЛОННА</text>
   </g>
 
-  <!-- Контрольные размеры и диагонали -->
+  <!-- Контрольные размеры -->
   <g>
     <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M253 702H1013"/>
     <text class="dim" x="633" y="696" text-anchor="middle">15 110</text>
@@ -158,12 +159,6 @@
     <path class="dimline" marker-start="url(#arr)" marker-end="url(#arr)" d="M1187 364V431"/>
     <text class="dim" x="1178" y="398" transform="rotate(-90 1178 398)" text-anchor="middle">891</text>
 
-    <path class="diag" d="M253 145L875 454L253 702L563 454L1187 145L875 454L1013 702"/>
-    <text class="tiny" x="463" y="331" transform="rotate(27 463 331)">5 044</text>
-    <text class="tiny" x="390" y="574" transform="rotate(-35 390 574)">7 039</text>
-    <text class="tiny" x="642" y="566" transform="rotate(-30 642 566)">18 047</text>
-    <text class="tiny" x="780" y="558" transform="rotate(28 780 558)">18 042</text>
-    <text class="tiny" x="1019" y="284" transform="rotate(-43 1019 284)">6 874</text>
   </g>
 
   <!-- Верхняя размерная цепочка -->

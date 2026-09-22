@@ -210,6 +210,19 @@ section{padding-block:clamp(64px,8vw,120px)}
 .fmt-c p{font-size:.92rem;color:rgba(255,255,255,.9);font-weight:300}
 .fmt-cap{margin-top:15px;padding-top:13px;border-top:1px solid rgba(255,255,255,.3);
   font-size:.76rem;letter-spacing:.14em;text-transform:uppercase}
+.fmt-c-feature{grid-column:1/-1;aspect-ratio:auto;min-height:390px;padding:0;
+  display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,.75fr);background:var(--slate)}
+.fmt-c-feature::after{display:none}
+.fmt-c-feature picture{position:relative;display:block;width:100%;min-height:390px;overflow:hidden;z-index:0}
+.fmt-c-feature picture img{object-position:center 58%}
+.fmt-copy{display:flex;flex-direction:column;justify-content:flex-end;padding:34px;color:var(--white);z-index:2}
+.fmt-c-feature .fmt-cap{margin-top:auto;padding-top:18px}
+
+@media (max-width:700px){
+  .fmt-c-feature{grid-template-columns:1fr;min-height:0}
+  .fmt-c-feature picture{min-height:430px}
+  .fmt-copy{padding:26px;min-height:260px}
+}
 
 /* ───────── бенто «что входит» ───────── */
 .bento{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:14px}
