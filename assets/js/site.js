@@ -179,8 +179,8 @@ document.querySelectorAll('[data-cal]').forEach(b => b.addEventListener('click',
 
 /* cookie: выбор запоминается, баннер больше не показывается.
    Аналитику и прочие необязательные скрипты подключайте внутри ckApply('all'). */
-const CK='soldout-cookie-v20260908';
-const CK_VERSION='2026-09-08';
+const CK='soldout-cookie-v20260930';
+const CK_VERSION='2026-09-30';
 const METRIKA_ID = Number(window.SOLDOUT_METRIKA_ID) || 0;
 let metrikaReady = false;
 

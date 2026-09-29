@@ -491,7 +491,8 @@ footer .wrap{position:relative;z-index:1}
 .ck.show{transform:none}
 .ck p{font-size:.9rem;color:var(--ink-60);font-weight:300;margin-bottom:16px;line-height:1.5}
 .ck p a{color:var(--slate);border-bottom:1px solid color-mix(in srgb,var(--slate) 35%,transparent)}
-.ck-b{display:flex;gap:9px;flex-wrap:wrap}
+.ck-b{display:flex;justify-content:flex-end}
+.ck-b .btn{min-width:120px}
 
 /* ───────── стрелка наверх вместо нижней плашки ───────── */
 .to-top{
