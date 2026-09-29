@@ -148,10 +148,22 @@ lbEl.addEventListener('touchend', e => {
   if (Math.abs(d) > 55) lbGo(d < 0 ? 1 : -1);
 }, {passive:true});
 
-/* Календарь открывается внешней ссылкой: Яндекс Календарь не загружается внутри сайта. */
+/* Яндекс Календарь загружается только после осознанного открытия окна пользователем. */
 const calEl = document.getElementById('cal');
+const calFrame = document.getElementById('cal-frame');
+const calEmbed = document.getElementById('cal-embed');
+
+function calLoad(){
+  if (!calFrame || calFrame.dataset.loaded === 'true') return;
+  calFrame.dataset.loaded = 'true';
+  calFrame.src = calFrame.dataset.src;
+}
+
+calFrame?.addEventListener('load', () => calEmbed?.classList.add('is-ready'));
+
 function calOpen(e){
   if (e) e.preventDefault();
+  calLoad();
   calEl.classList.add('open');
   document.body.style.overflow = 'hidden';
   trackGoal('calendar_open');

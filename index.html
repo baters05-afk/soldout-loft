@@ -651,9 +651,14 @@
       <button class="md-x" onclick="calClose()" aria-label="Закрыть">×</button>
     </div>
     <div class="md-b">
-      <div class="cal-fr cal-external">
-        <p>Календарь размещён в Яндекс Календаре. Он откроется в новой вкладке; посетителям видны только занятые даты и время.</p>
-        <a class="btn btn-p" href="https://calendar.yandex.ru/embed/week?private_token=423eabf47daee653959d4d7dbf0e43f0efa68133&amp;tz_id=Europe%2FMoscow" target="_blank" rel="noopener noreferrer">Открыть календарь</a>
+      <div class="cal-fr cal-embed" id="cal-embed">
+        <div class="cal-loading" id="cal-loading" aria-live="polite">Загружаем занятые даты…</div>
+        <iframe id="cal-frame"
+          data-src="https://calendar.yandex.ru/embed/week?private_token=423eabf47daee653959d4d7dbf0e43f0efa68133&amp;tz_id=Europe%2FMoscow"
+          title="Календарь занятости лофта SOLDOUT"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <p class="cal-fallback">Если календарь не появился, <a href="https://calendar.yandex.ru/embed/week?private_token=423eabf47daee653959d4d7dbf0e43f0efa68133&amp;tz_id=Europe%2FMoscow" target="_blank" rel="noopener noreferrer">откройте его в отдельной вкладке</a>.</p>
       </div>
     </div>
     <div class="md-f">
@@ -679,6 +684,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
 </a>
 
-<script src="assets/js/site.js?v=20260929-1" defer></script>
+<script src="assets/js/site.js?v=20260929-2" defer></script>
 </body>
 </html>
