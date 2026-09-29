@@ -45,32 +45,12 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
 
-/* Фирменный паттерн — не воссозданный, а вырезанный из макета брендбука.
-   Модуль оригинала измерен по пикселям: ровно 120×120, плитка взята 2×2 модуля,
-   поэтому стыкуется без швов. Накладывается через ::before как фактура. */
-.pattern{position:relative}
-.pattern>*{position:relative;z-index:1}
-.pattern::before{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14;
-  /* Затухание сделано слоем фона, а не mask-image: маска с градиентом
-     непредсказуемо ведёт себя в Safari и там паттерн пропадал целиком.
-     Верхний слой растворяет плитку в цвете страницы к низу блока. */
-  background-image:
-    linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--bone-l) 75%,transparent) 62%,var(--bone-l) 88%),
-    url("/assets/brand/tile-slate.png?v=20260807");
-  background-size:100% 100%,150px 150px;
-  background-repeat:no-repeat,repeat;
-}
-
 /* ───────── типографика ───────── */
 .h1{font-size:clamp(2.6rem,7vw,6rem);line-height:1.0;font-weight:500;letter-spacing:-.03em}
 .h2{font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.04;font-weight:500;letter-spacing:-.025em;overflow-wrap:break-word}
 .h3{font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.15;font-weight:500;letter-spacing:-.015em;overflow-wrap:break-word}
 .lbl{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--taupe)}
 .lead{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--ink-60);font-weight:300}
-
-.todo{color:var(--taupe);border:1px dashed var(--taupe);padding:0 .35em;border-radius:4px;
-  font-size:.85em;white-space:nowrap;font-weight:500}
 
 /* ───────── кнопки ───────── */
 .btn{
@@ -100,14 +80,14 @@ header{
 }
 header>*{position:relative;z-index:1}
 header.stuck{background:var(--bone-l);box-shadow:0 1px 0 var(--ink-12);padding-block:calc(8px + env(safe-area-inset-top,0px)) 8px}
-.logo{display:grid;align-items:center;position:relative;flex-shrink:0}
+.logo{display:grid;align-items:center;position:relative;flex-shrink:0;min-height:44px}
 .logo img{grid-area:1/1;height:24px;width:auto;max-width:none;transition:height .4s var(--ease),opacity .3s}
 header.stuck .logo img{height:21px}
 .logo-light{opacity:0;pointer-events:none}
 header:not(.stuck) .logo-dark{opacity:0}
 header:not(.stuck) .logo-light{opacity:1}
 nav{display:flex;gap:4px;align-items:center}
-nav a{font-size:.92rem;color:var(--ink-60);padding:8px 14px;border-radius:100px;transition:.25s}
+nav a{display:flex;align-items:center;min-height:44px;font-size:.92rem;color:var(--ink-60);padding:8px 14px;border-radius:100px;transition:.25s}
 nav a:hover{color:var(--ink);background:rgba(0,8,13,.05)}
 header:not(.stuck) nav a{color:rgba(255,255,255,.86)}
 header:not(.stuck) nav a:hover{color:var(--white);background:rgba(255,255,255,.12)}
@@ -381,11 +361,11 @@ section{padding-block:clamp(64px,8vw,120px)}
 .form{display:grid;gap:14px}
 .form label{display:grid;gap:7px}
 .form .lbl{color:var(--ink-40)}
-.form input,.form textarea{
+.form input{
   font-family:var(--font);font-size:1rem;color:var(--ink);background:var(--white);
   border:1px solid var(--ink-12);border-radius:var(--r);padding:16px 18px;width:100%;
   transition:border-color .25s,box-shadow .25s}
-.form input:focus,.form textarea:focus{outline:none;border-color:var(--slate);
+.form input:focus{outline:none;border-color:var(--slate);
   box-shadow:0 0 0 4px color-mix(in srgb,var(--slate) 12%,transparent)}
 .cons{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--ink-40);line-height:1.45}
 .cons input{width:auto;margin-top:3px;flex:none}
@@ -449,7 +429,6 @@ footer .wrap{position:relative;z-index:1}
 .md-x:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
 .md-b{flex:1;min-height:0;overflow:auto;padding:18px 26px 26px;-webkit-overflow-scrolling:touch}
 .cal-fr{border:1px solid var(--ink-12);border-radius:var(--r);overflow:hidden;background:var(--white)}
-.cal-fr iframe{width:100%;height:min(560px,58vh);border:0;display:block}
 .cal-external{min-height:280px;padding:clamp(28px,5vw,54px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:22px}
 .cal-external p{max-width:620px;color:var(--ink-60)}
 .md-f{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
@@ -459,7 +438,6 @@ footer .wrap{position:relative;z-index:1}
 @media (max-width:640px){
   .md{padding:0;place-items:stretch}
   .md-w{border-radius:0;max-height:100vh;height:100%}
-  .cal-fr iframe{height:56vh}
 }
 
 /* ───────── просмотр фото ───────── */
@@ -539,7 +517,6 @@ body:has(.ck.show) .to-top{opacity:0;pointer-events:none}
   .fg{grid-template-columns:1fr;gap:24px}
   section{padding-block:56px}
   .cat-collage{grid-template-columns:1fr 1fr;grid-template-rows:none;min-height:0}
-  .cat-a,.cat-b,.cat-c,.cat-d{grid-column:auto;grid-row:auto}
   .cat-collage figure{aspect-ratio:3/4}
   .gal-tools{margin-bottom:0}
   .ck{right:12px;left:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:min(430px, calc(100vw - 24px));padding:18px 20px}
@@ -596,8 +573,6 @@ picture{display:contents}
 
 /* ───────── композиционный и responsive quality pass · 2026-08-16 ───────── */
 html{scroll-padding-top:72px}
-.logo{min-height:44px;display:grid;align-items:center;flex-shrink:0}
-nav a{min-height:44px;display:flex;align-items:center}
 .btn:focus-visible,a:focus-visible,button:focus-visible,.gal figure:focus-visible,.faq summary:focus-visible{
   outline:3px solid color-mix(in srgb,var(--slate) 48%,transparent);outline-offset:3px
 }
@@ -649,9 +624,7 @@ nav a{min-height:44px;display:flex;align-items:center}
 @media (max-width:640px){
   header{padding:calc(8px + env(safe-area-inset-top,0px)) var(--pad) 8px}
   header.stuck{padding-block:calc(6px + env(safe-area-inset-top,0px)) 6px}
-  .hd-r>.btn{display:none}
   .hero-media{height:clamp(300px,68vw,460px)}
-  .hero-media img{object-position:center 48%}
   .hero-in{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));padding-top:24px}
   .hero-sub,.hero .lead{margin-block:10px 14px}
   .hero-act{align-items:stretch}
@@ -671,7 +644,7 @@ nav a{min-height:44px;display:flex;align-items:center}
   .fg a{min-height:44px;display:flex;align-items:center;margin:0}
   #contact{padding-block:52px}
   #contact .ct{align-items:start}
-  #contact .form{height:auto;grid-template-rows:none}
+  #contact .form{height:auto}
   #contact .map iframe{height:230px}
   .contact-messengers{display:grid;grid-template-columns:1fr 1fr}
   .contact-messengers .btn{width:100%;min-width:0;padding-inline:18px}

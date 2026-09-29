@@ -28,7 +28,6 @@
 <!-- Jost — ближайший бесплатный аналог фирменного NAMU Pro: тот же геометрический
      гротеск с одноэтажной «а» и полной кириллицей. Шрифт хранится локально,
      чтобы первый экран не зависел от внешних сервисов. -->
-<script src="assets/js/config.js?v=20260907-1"></script>
 <script>
   // Анимации включаются только при живом JS и если пользователь их не отключил.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -84,7 +83,7 @@
      после этого не перезапрашивает их даже при перезагрузке. Сменить номер версии —
      единственный способ отдать посетителю новый файл. Правится при каждом
      изменении site.css / site.js. -->
-<link rel="stylesheet" href="assets/css/site.css?v=20260922-1">
+<link rel="stylesheet" href="assets/css/site.css?v=20260929-1">
 </head>
 <body>
 
@@ -364,16 +363,6 @@
       <button type="button" class="gal-btn gal-next" aria-label="Следующие фото" onclick="galGo(1)">›</button>
     </div>
     </div>
-    <script>
-      function galGo(dir){
-        var track = document.querySelector('.gal');
-        if (!track) return;
-        var card = track.querySelector('figure');
-        var gap = parseFloat(getComputedStyle(track).gap) || 14;
-        var step = (card ? card.getBoundingClientRect().width : 400) + gap;
-        track.scrollLeft += step * dir;
-      }
-    </script>
     <div class="gal rv" tabindex="0" aria-label="Фотографии площадки, листайте вбок">
       <figure><picture><source type="image/webp" sizes="(max-width:900px) 85vw, 420px" srcset="assets/opt/ev-02-640.webp 640w, assets/opt/ev-02-1024.webp 1024w, assets/opt/ev-02-1600.webp 1600w"><img src="assets/opt/ev-02-1024.jpg" width="1680" height="1120" loading="lazy" decoding="async" alt="Зал лофта днём: дневной свет из арочных окон, кирпич и гирлянды"></picture><figcaption>Зал днём · 175 м²</figcaption></figure>
       <figure><picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" srcset="assets/opt/loft-02-640.webp 640w, assets/opt/loft-02-1024.webp 1024w, assets/opt/loft-02-1600.webp 1600w"><img src="assets/opt/loft-02-1024.jpg" width="1500" height="1000" loading="lazy" decoding="async" alt="Зона отдыха у окон: кожаные диваны и белая циклорамная стена"></picture><figcaption>Зона отдыха</figcaption></figure>
@@ -567,7 +556,7 @@
         <div class="map" id="venue-map">
           <div class="map-permission">
             <p><strong>Карта Малой Семёновской, 5, стр. 10</strong><br>
-              Виджет загрузится с сервиса Яндекс Карты и получит технические данны о визите.</p>
+              Виджет загрузится с сервиса Яндекс Карты и получит технические данные о визите.</p>
             <button class="btn btn-o btn-sm" type="button" id="map-load">Показать карту</button>
           </div>
         </div>
@@ -663,8 +652,8 @@
     </div>
     <div class="md-b">
       <div class="cal-fr cal-external">
-        <p>Календарь размещён во внешнем сервисе Google. Он откроется в новой вкладке и будет работать по правилам этого сервиса.</p>
-        <a class="btn btn-p" href="https://calendar.google.com/calendar/embed?src=56blb2jco2gqc63pnhgq71anfg%40group.calendar.google.com&ctz=Europe%2FMoscow&mode=AGENDA&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&wkst=2&bgcolor=%23ffffff&color=%233F5A73" target="_blank" rel="noopener noreferrer">Открыть календарь</a>
+        <p>Календарь размещён в Яндекс Календаре. Он откроется в новой вкладке; посетителям видны только занятые даты и время.</p>
+        <a class="btn btn-p" href="https://calendar.yandex.ru/embed/week?private_token=423eabf47daee653959d4d7dbf0e43f0efa68133&amp;tz_id=Europe%2FMoscow" target="_blank" rel="noopener noreferrer">Открыть календарь</a>
       </div>
     </div>
     <div class="md-f">
@@ -690,6 +679,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
 </a>
 
-<script src="assets/js/site.js?v=20260922-1" defer></script>
+<script src="assets/js/site.js?v=20260929-1" defer></script>
 </body>
 </html>

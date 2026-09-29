@@ -148,7 +148,7 @@ lbEl.addEventListener('touchend', e => {
   if (Math.abs(d) > 55) lbGo(d < 0 ? 1 : -1);
 }, {passive:true});
 
-/* Календарь открывается внешней ссылкой: Google не загружается внутри сайта. */
+/* Календарь открывается внешней ссылкой: Яндекс Календарь не загружается внутри сайта. */
 const calEl = document.getElementById('cal');
 function calOpen(e){
   if (e) e.preventDefault();
@@ -281,9 +281,7 @@ function trapFocus(box){
 })();
 
 /* ── форма заявки: маска, проверка, состояния ─────────────────── */
-/* Адрес обработчика заявок задаётся в assets/js/config.js —
-   это единственный файл, который правится при смене хостинга. */
-const LEAD_URL = (window.SOLDOUT_LEAD_URL || '').trim() || 'api/lead.php';
+const LEAD_URL = 'api/lead.php';
 
 (function(){
   const form = document.querySelector('.form');
@@ -378,8 +376,7 @@ const LEAD_URL = (window.SOLDOUT_LEAD_URL || '').trim() || 'api/lead.php';
           company: form.querySelector('input[name="company"]')?.value || '',
           consent: true,
           consent_version: '2026-09-08',
-          consented_at: new Date().toISOString(),
-          source: location.origin + location.pathname
+          consented_at: new Date().toISOString()
         })
       });
       const data = await r.json().catch(() => ({}));
