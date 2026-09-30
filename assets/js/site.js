@@ -181,7 +181,7 @@ document.querySelectorAll('[data-cal]').forEach(b => b.addEventListener('click',
    Аналитику и прочие необязательные скрипты подключайте внутри ckApply('all'). */
 const CK='soldout-cookie-v20260930';
 const CK_VERSION='2026-09-30';
-const METRIKA_ID = Number(window.SOLDOUT_METRIKA_ID) || 0;
+const METRIKA_ID = 108712577;
 let metrikaReady = false;
 
 function loadMetrika(){
